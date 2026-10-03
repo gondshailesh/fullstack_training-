@@ -1,597 +1,743 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
 
-```
-<!-- Document character encoding -->
-<meta charset="UTF-8">
+    <!-- Makes the webpage responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Responsive webpage -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Information webpage demonstrating HTML5 images, lists, tables, semantic elements, and portfolio sections">
 
-<!-- Webpage title -->
-<title>Shailesh Gond - Information & Portfolio</title>
-```
+    <title>Information Webpage - Portfolio</title>
 
+    <style>
+        /* General webpage styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            margin-bottom: 5px;
+        }
+
+        /* Navigation styling */
+        nav {
+            background-color: #111827;
+            text-align: center;
+            padding: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* Main content */
+        main {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Common section styling */
+        section {
+            background-color: white;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        section h2 {
+            color: #1f2937;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        /* Profile image */
+        .profile {
+            text-align: center;
+        }
+
+        .profile img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #1f2937;
+        }
+
+        /* Project images */
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .project {
+            flex: 1 1 300px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .project img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background-color: #e5e7eb;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1f2937;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f3f4f6;
+        }
+
+        /* Contact section */
+        address {
+            font-style: normal;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* Responsive navigation */
+        @media (max-width: 600px) {
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-```
-<!-- ==================================================
-     HEADER
-     ================================================== -->
+    <!-- =====================================================
+         HEADER
+         Semantic element: header
+         Contains the introductory information of the webpage
+         ===================================================== -->
 
-<header>
+    <header>
 
-    <h1>Shailesh Gond</h1>
-
-    <p>
-        MCA Graduate | PHP Developer | Full Stack Developer
-    </p>
-
-</header>
-
-
-<!-- ==================================================
-     NAVIGATION
-     ================================================== -->
-
-<nav>
-
-    <a href="#home">Home</a> |
-    <a href="#information">Information</a> |
-    <a href="#skills">Skills</a> |
-    <a href="#education">Education</a> |
-    <a href="#portfolio">Portfolio</a> |
-    <a href="#contact">Contact</a>
-
-</nav>
-
-
-<!-- ==================================================
-     MAIN CONTENT
-     ================================================== -->
-
-<main>
-
-
-    <!-- ==================================================
-         HOME SECTION
-         ================================================== -->
-
-    <section id="home">
-
-        <h2>Welcome to My Webpage</h2>
-
-        <!-- Image -->
-
-        <img
-            src="https://via.placeholder.com/200"
-            alt="Profile Image"
-            width="200"
-            height="200"
-        >
+        <h1>Shailesh Gond</h1>
 
         <p>
-            Hello! My name is <strong>Shailesh Gond</strong>.
-            I am an MCA graduate interested in web development
-            and software development.
+            PHP Developer | Laravel Developer | Full Stack Developer
         </p>
 
         <p>
-            My main technologies are
-            <strong>PHP, Laravel, MySQL, HTML, CSS
-            and JavaScript.</strong>
+            Welcome to my personal information and portfolio webpage.
         </p>
 
-    </section>
+    </header>
 
 
-    <!-- ==================================================
-         INFORMATION WEBPAGE
-         ================================================== -->
+    <!-- =====================================================
+         NAVIGATION
+         Semantic element: nav
+         Provides links to different sections of the webpage
+         ===================================================== -->
 
-    <section id="information">
+    <nav>
 
-        <h2>Information About Web Development</h2>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
 
-        <article>
+    </nav>
 
-            <h3>What is Web Development?</h3>
+
+    <!-- =====================================================
+         MAIN
+         Semantic element: main
+         Contains the primary content of the webpage
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             ABOUT SECTION
+             Demonstrates:
+             - Semantic section
+             - Image
+             - Paragraph
+             ================================================= -->
+
+        <section id="about">
+
+            <h2>About Me</h2>
+
+            <div class="profile">
+
+                <!-- Image example -->
+                <img src="images/Passport.jpg"
+                    alt="Profile picture of Shailesh Gond">
+
+                <h3>Shailesh Gond</h3>
+
+            </div>
 
             <p>
-                Web development is the process of creating
-                websites and web applications that run on
-                the Internet or an intranet.
-            </p>
-
-        </article>
-
-
-        <article>
-
-            <h3>Frontend Development</h3>
-
-            <p>
-                Frontend development focuses on the part of
-                a website that users can see and interact with.
+                I am a postgraduate in Computer Applications with
+                an interest in web development and software development.
+                I enjoy creating responsive, user-friendly and
+                database-driven web applications.
             </p>
 
             <p>
-                Common frontend technologies include:
+                My primary areas of interest include PHP, Laravel,
+                MySQL, JavaScript, HTML, CSS and Bootstrap.
             </p>
 
+        </section>
 
-            <!-- Unordered List -->
 
-            <ul>
+        <!-- =================================================
+             SKILLS SECTION
+             Demonstrates:
+             - Unordered list
+             - Nested list
+             ================================================= -->
 
-                <li>HTML</li>
-                <li>CSS</li>
+        <section id="skills">
+
+            <h2>Technical Skills</h2>
+
+            <p>
+                The following list represents the technologies and
+                tools used in web development.
+            </p>
+
+            <!-- Unordered list -->
+
+            <h3>Programming & Web Technologies</h3>
+
+            <ul class="skills-list">
+
+                <li>HTML5</li>
+                <li>CSS3</li>
                 <li>JavaScript</li>
                 <li>Bootstrap</li>
-                <li>React</li>
+                <li>jQuery</li>
+                <li>PHP</li>
+                <li>Laravel</li>
+                <li>MySQL</li>
+                <li>Git</li>
+                <li>GitHub</li>
 
             </ul>
 
-        </article>
+
+            <!-- Nested unordered list -->
+
+            <h3>Skill Categories</h3>
+
+            <ul>
+
+                <li>
+                    Front-End Development
+
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Bootstrap</li>
+                    </ul>
+
+                </li>
+
+                <li>
+                    Back-End Development
+
+                    <ul>
+                        <li>PHP</li>
+                        <li>Laravel</li>
+                        <li>REST API</li>
+                    </ul>
+
+                </li>
+
+                <li>
+                    Database
+
+                    <ul>
+                        <li>MySQL</li>
+                        <li>Database Design</li>
+                        <li>SQL Queries</li>
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </section>
 
 
-        <article>
+        <!-- =================================================
+             EDUCATION SECTION
+             Demonstrates:
+             - Table
+             - Table headings
+             - Table rows and columns
+             ================================================= -->
 
-            <h3>Backend Development</h3>
+        <section id="education">
+
+            <h2>Education</h2>
 
             <p>
-                Backend development handles server-side
-                operations, databases, authentication and
-                application logic.
+                The table below presents educational qualifications
+                in a structured format.
             </p>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Degree</th>
+                        <th>University</th>
+                        <th>Year</th>
+                        <th>Percentage</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>MCA</td>
+                        <td>SRTM University, Nanded</td>
+                        <td>2026</td>
+                        <td>63.97%</td>
+                    </tr>
+
+                    <tr>
+                        <td>BCA</td>
+                        <td>SRTM University, Nanded</td>
+                        <td>2023</td>
+                        <td>64.97%</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- =================================================
+             PROJECT SECTION
+             Demonstrates:
+             - Multiple images
+             - Article elements
+             - Headings
+             - Paragraphs
+             ================================================= -->
+
+        <section id="projects">
+
+            <h2>Portfolio Projects</h2>
 
             <p>
-                Common backend technologies include:
+                Below are examples of projects that demonstrate
+                different aspects of web application development.
             </p>
 
 
-            <!-- Ordered List -->
-
-            <ol>
-
-                <li>PHP</li>
-                <li>Laravel</li>
-                <li>Node.js</li>
-                <li>Python</li>
-                <li>Java</li>
-
-            </ol>
-
-        </article>
+            <div class="project-container">
 
 
-        <article>
+                <!-- Project 1 -->
 
-            <h3>Database</h3>
+                <article class="project">
 
-            <p>
-                Databases are used to store and manage
-                application data.
-            </p>
+                    <img src="https://via.placeholder.com/500x300"
+                        alt="Online Notice Board project">
+
+                    <h3>Online Notice Board</h3>
+
+                    <p>
+                        A web-based application for managing and
+                        displaying college notices.
+                    </p>
+
+                    <h4>Technologies</h4>
+
+                    <ul>
+                        <li>PHP</li>
+                        <li>Laravel</li>
+                        <li>MySQL</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
+
+                </article>
 
 
-            <!-- Description List -->
+                <!-- Project 2 -->
+
+                <article class="project">
+
+                    <img src="https://via.placeholder.com/500x300"
+                        alt="Expense management project">
+
+                    <h3>Expense Management System</h3>
+
+                    <p>
+                        A database-driven application for recording
+                        income, expenses and financial transactions.
+                    </p>
+
+                    <h4>Features</h4>
+
+                    <ol>
+                        <li>User authentication</li>
+                        <li>Add income</li>
+                        <li>Add expenses</li>
+                        <li>Transaction management</li>
+                    </ol>
+
+                </article>
+
+
+                <!-- Project 3 -->
+
+                <article class="project">
+
+                    <img src="https://via.placeholder.com/500x300"
+                        alt="Business management project">
+
+                    <h3>Business Management System</h3>
+
+                    <p>
+                        A full-stack application concept for managing
+                        customers, products, sales and invoices.
+                    </p>
+
+                    <h4>Main Modules</h4>
+
+                    <ul>
+                        <li>Customer Management</li>
+                        <li>Product Management</li>
+                        <li>Inventory</li>
+                        <li>Sales</li>
+                        <li>Invoices</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EXPERIENCE SECTION
+             Demonstrates:
+             - Ordered list
+             - Semantic article
+             ================================================= -->
+
+        <section id="experience">
+
+            <h2>Experience</h2>
+
+            <article>
+
+                <h3>Assistant Professor - Computer Applications</h3>
+
+                <p>
+                    I have experience teaching computer application
+                    subjects and conducting practical sessions.
+                </p>
+
+                <h4>Responsibilities</h4>
+
+                <ol>
+
+                    <li>Conducted theory lectures.</li>
+
+                    <li>Conducted programming practical sessions.</li>
+
+                    <li>Explained programming concepts to students.</li>
+
+                    <li>Guided students during academic projects.</li>
+
+                    <li>Prepared assignments and practical exercises.</li>
+
+                    <li>Evaluated student performance.</li>
+
+                </ol>
+
+            </article>
+
+        </section>
+
+
+        <!-- =================================================
+             SERVICES SECTION
+             Demonstrates:
+             - Description list
+             - dt
+             - dd
+             ================================================= -->
+
+        <section id="services">
+
+            <h2>Services / Areas of Work</h2>
 
             <dl>
 
-                <dt><strong>MySQL</strong></dt>
+                <dt><strong>Web Development</strong></dt>
 
                 <dd>
-                    A popular relational database management system.
+                    Development of responsive websites using HTML,
+                    CSS, JavaScript and Bootstrap.
                 </dd>
 
 
-                <dt><strong>PostgreSQL</strong></dt>
+                <dt><strong>PHP Development</strong></dt>
 
                 <dd>
-                    An advanced open-source relational database.
+                    Development of server-side applications using PHP
+                    and MySQL.
                 </dd>
 
 
-                <dt><strong>MongoDB</strong></dt>
+                <dt><strong>Laravel Development</strong></dt>
 
                 <dd>
-                    A NoSQL document-oriented database.
+                    Development of MVC-based web applications using
+                    Laravel framework.
+                </dd>
+
+
+                <dt><strong>Database Development</strong></dt>
+
+                <dd>
+                    Creating tables, relationships, SQL queries and
+                    database-driven applications using MySQL.
                 </dd>
 
             </dl>
 
-        </article>
+        </section>
+
 
-    </section>
+        <!-- =================================================
+             PROJECT COMPARISON TABLE
+             Demonstrates:
+             - Table
+             - thead
+             - tbody
+             ================================================= -->
 
+        <section>
 
-    <!-- ==================================================
-         SKILLS SECTION
-         ================================================== -->
+            <h2>Project Technology Comparison</h2>
 
-    <section id="skills">
+            <table>
 
-        <h2>My Technical Skills</h2>
+                <thead>
 
+                    <tr>
+                        <th>Project</th>
+                        <th>Front-End</th>
+                        <th>Back-End</th>
+                        <th>Database</th>
+                        <th>Purpose</th>
+                    </tr>
 
-        <h3>Frontend Skills</h3>
+                </thead>
 
-        <ul>
+                <tbody>
 
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>Bootstrap</li>
-            <li>jQuery</li>
+                    <tr>
+                        <td>Notice Board</td>
+                        <td>HTML, CSS, Bootstrap</td>
+                        <td>Laravel</td>
+                        <td>MySQL</td>
+                        <td>College Notices</td>
+                    </tr>
 
-        </ul>
+                    <tr>
+                        <td>Expense System</td>
+                        <td>HTML, CSS, JavaScript</td>
+                        <td>PHP</td>
+                        <td>MySQL</td>
+                        <td>Expense Tracking</td>
+                    </tr>
 
+                    <tr>
+                        <td>Business Management</td>
+                        <td>Bootstrap, JavaScript</td>
+                        <td>Laravel</td>
+                        <td>MySQL</td>
+                        <td>Business Operations</td>
+                    </tr>
 
-        <h3>Backend Skills</h3>
+                </tbody>
 
-        <ul>
+            </table>
 
-            <li>PHP</li>
-            <li>Laravel</li>
-            <li>REST API</li>
+        </section>
 
-        </ul>
 
+        <!-- =================================================
+             CONTACT SECTION
+             Demonstrates:
+             - Address semantic element
+             - Links
+             ================================================= -->
 
-        <h3>Database Skills</h3>
+        <section id="contact">
 
-        <ul>
+            <h2>Contact Information</h2>
 
-            <li>MySQL</li>
+            <address>
 
-        </ul>
+                <p>
+                    <strong>Name:</strong> Shailesh Gond
+                </p>
 
+                <p>
+                    <strong>Email:</strong>
+                    <a href="mailto:example@gmail.com">
+                        example@gmail.com
+                    </a>
+                </p>
 
-        <h3>Development Tools</h3>
+                <p>
+                    <strong>GitHub:</strong>
+                    <a href="#" target="_blank">
+                        GitHub Profile
+                    </a>
+                </p>
 
-        <ul>
+                <p>
+                    <strong>LinkedIn:</strong>
+                    <a href="#" target="_blank">
+                        LinkedIn Profile
+                    </a>
+                </p>
 
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Composer</li>
-            <li>Visual Studio Code</li>
+            </address>
 
-        </ul>
+        </section>
 
-    </section>
 
+        <!-- =================================================
+             SUMMARY / ASIDE
+             Demonstrates:
+             - aside semantic element
+             ================================================= -->
 
-    <!-- ==================================================
-         EDUCATION TABLE
-         ================================================== -->
+        <aside>
 
-    <section id="education">
+            <section>
 
-        <h2>Education Information</h2>
+                <h2>Quick Information</h2>
 
+                <ul>
 
-        <table border="1" cellpadding="10">
+                    <li>Interested in Web Development</li>
+                    <li>Interested in PHP Development</li>
+                    <li>Learning Laravel</li>
+                    <li>Working with MySQL</li>
+                    <li>Interested in Full-Stack Development</li>
 
-            <thead>
+                </ul>
 
-                <tr>
+            </section>
 
-                    <th>Sr. No.</th>
-                    <th>Degree</th>
-                    <th>University</th>
-                    <th>Status</th>
+        </aside>
 
-                </tr>
 
-            </thead>
+    </main>
 
 
-            <tbody>
+    <!-- =====================================================
+         FOOTER
+         Semantic element: footer
+         Contains copyright information
+         ===================================================== -->
 
-                <tr>
+    <footer>
 
-                    <td>1</td>
+        <p>
+            &copy; 2026 Shailesh Gond. All Rights Reserved.
+        </p>
 
-                    <td>MCA</td>
+        <p>
+            Portfolio Information Webpage
+        </p>
 
-                    <td>
-                        SRTM University, Nanded
-                    </td>
-
-                    <td>
-                        Completed
-                    </td>
-
-                </tr>
-
-
-                <tr>
-
-                    <td>2</td>
-
-                    <td>BCA</td>
-
-                    <td>
-                        University / College
-                    </td>
-
-                    <td>
-                        Completed
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </section>
-
-
-    <!-- ==================================================
-         PORTFOLIO SECTION
-         ================================================== -->
-
-    <section id="portfolio">
-
-        <h2>My Portfolio</h2>
-
-
-        <!-- Portfolio Project 1 -->
-
-        <article>
-
-            <h3>Project 1: Online Notice Board Portal</h3>
-
-
-            <img
-                src="https://via.placeholder.com/400x200"
-                alt="Online Notice Board Project"
-                width="400"
-            >
-
-
-            <p>
-                An online notice board portal developed to
-                manage and display notices digitally.
-            </p>
-
-            <p>
-                <strong>Technologies:</strong>
-            </p>
-
-            <ul>
-
-                <li>PHP</li>
-                <li>Laravel</li>
-                <li>MySQL</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-
-            </ul>
-
-        </article>
-
-
-        <!-- Portfolio Project 2 -->
-
-        <article>
-
-            <h3>Project 2: Khata Book Management System</h3>
-
-
-            <img
-                src="https://via.placeholder.com/400x200"
-                alt="Khata Book Management System"
-                width="400"
-            >
-
-
-            <p>
-                A web application for managing income,
-                expenses, daily transactions and customer
-                records.
-            </p>
-
-            <p>
-                <strong>Technologies:</strong>
-            </p>
-
-            <ul>
-
-                <li>PHP</li>
-                <li>MySQL</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-
-            </ul>
-
-        </article>
-
-
-        <!-- Portfolio Project 3 -->
-
-        <article>
-
-            <h3>Project 3: Yogify</h3>
-
-
-            <img
-                src="https://via.placeholder.com/400x200"
-                alt="Yogify Project"
-                width="400"
-            >
-
-
-            <p>
-                A website project related to yoga,
-                health and fitness.
-            </p>
-
-            <p>
-                <strong>Technologies:</strong>
-            </p>
-
-            <ul>
-
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>PHP</li>
-
-            </ul>
-
-        </article>
-
-    </section>
-
-
-    <!-- ==================================================
-         EXPERIENCE SECTION
-         ================================================== -->
-
-    <section id="experience">
-
-        <h2>Experience</h2>
-
-
-        <article>
-
-            <h3>Assistant Professor</h3>
-
-            <p>
-                <strong>
-                    Vasant Kale College of Computer
-                    and Management Science
-                </strong>
-            </p>
-
-            <p>
-                Teaching subjects related to PHP,
-                Web Development and Software Engineering.
-            </p>
-
-        </article>
-
-    </section>
-
-
-    <!-- ==================================================
-         ACHIEVEMENT SECTION
-         ================================================== -->
-
-    <section id="achievement">
-
-        <h2>Achievements</h2>
-
-        <ul>
-
-            <li>
-                Second Prize in IT Tech War
-                Web Development Competition
-            </li>
-
-            <li>
-                Completed MCA
-            </li>
-
-            <li>
-                Developed web development projects
-            </li>
-
-        </ul>
-
-    </section>
-
-
-    <!-- ==================================================
-         CONTACT SECTION
-         ================================================== -->
-
-    <section id="contact">
-
-        <h2>Contact Information</h2>
-
-
-        <address>
-
-            <p>
-                <strong>Name:</strong>
-                Shailesh Gond
-            </p>
-
-
-            <p>
-                <strong>Email:</strong>
-
-                <a href="mailto:your-email@example.com">
-                    your-email@example.com
-                </a>
-
-            </p>
-
-
-            <p>
-                <strong>Phone:</strong>
-
-                <a href="tel:+910000000000">
-                    +91 XXXXX XXXXX
-                </a>
-
-            </p>
-
-
-            <p>
-                <strong>Location:</strong>
-                Pune, Maharashtra, India
-            </p>
-
-
-            <p>
-
-                <strong>GitHub:</strong>
-
-                <a
-                    href="https://github.com/gondshailesh"
-                    target="_blank"
-                >
-                    GitHub Profile
-                </a>
-
-            </p>
-
-        </address>
-
-    </section>
-
-</main>
-
-
-<!-- ==================================================
-     FOOTER
-     ================================================== -->
-
-<footer>
-
-    <p>
-        &copy; 2026 Shailesh Gond.
-        All Rights Reserved.
-    </p>
-
-    <p>
-        Created using HTML5
-    </p>
-
-</footer>
-```
+    </footer>
 
 </body>
 
