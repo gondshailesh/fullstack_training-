@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Form</title>
+</head>
+
+<body>
+
+    <h1>Student Registration Form</h1>
+
+    <form action="#" method="post">
+
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <!-- Full Name -->
+            <label for="fullname">Full Name:</label>
+            <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Enter your full name"
+                required
+                minlength="3"
+                maxlength="50"
+            >
+            <br><br>
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@gmail.com"
+                required
+            >
+            <br><br>
+
+            <!-- Mobile Number -->
+            <label for="mobile">Mobile Number:</label>
+            <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                placeholder="Enter 10 digit mobile number"
+                pattern="[0-9]{10}"
+                required
+            >
+            <br><br>
+
+            <!-- Password -->
+            <label for="password">Password:</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                minlength="8"
+                required
+            >
+            <br><br>
+
+            <!-- Date of Birth -->
+            <label for="dob">Date of Birth:</label>
+            <input
+                type="date"
+                id="dob"
+                name="dob"
+                required
+            >
+            <br><br>
+
+            <!-- Gender -->
+            <label>Gender:</label>
+
+            <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="male"
+                required
+            >
+            <label for="male">Male</label>
+
+            <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="female"
+            >
+            <label for="female">Female</label>
+
+            <input
+                type="radio"
+                id="other"
+                name="gender"
+                value="other"
+            >
+            <label for="other">Other</label>
+
+        </fieldset>
+
+        <br>
+
+        <!-- Education Information -->
+        <fieldset>
+            <legend>Education Information</legend>
+
+            <!-- Course -->
+            <label for="course">Select Course:</label>
+
+            <select id="course" name="course" required>
+
+                <option value="">-- Select Course --</option>
+                <option value="bca">BCA</option>
+                <option value="bsc">B.Sc Computer Science</option>
+                <option value="mca">MCA</option>
+                <option value="msc">M.Sc Computer Science</option>
+
+            </select>
+
+            <br><br>
+
+            <!-- Experience -->
+            <label for="experience">Experience Level:</label>
+
+            <input
+                type="range"
+                id="experience"
+                name="experience"
+                min="0"
+                max="10"
+                step="1"
+                value="0"
+            >
+
+            <br><br>
+
+            <!-- Skills -->
+            <label>Skills:</label>
+
+            <input
+                type="checkbox"
+                id="html"
+                name="skills"
+                value="html"
+            >
+            <label for="html">HTML</label>
+
+            <input
+                type="checkbox"
+                id="css"
+                name="skills"
+                value="css"
+            >
+            <label for="css">CSS</label>
+
+            <input
+                type="checkbox"
+                id="javascript"
+                name="skills"
+                value="javascript"
+            >
+            <label for="javascript">JavaScript</label>
+
+            <input
+                type="checkbox"
+                id="php"
+                name="skills"
+                value="php"
+            >
+            <label for="php">PHP</label>
+
+        </fieldset>
+
+        <br>
+
+        <!-- Contact Information -->
+        <fieldset>
+            <legend>Contact Information</legend>
+
+            <!-- Address -->
+            <label for="address">Address:</label>
+            <br>
+
+            <textarea
+                id="address"
+                name="address"
+                rows="4"
+                cols="40"
+                placeholder="Enter your address"
+                required
+            ></textarea>
+
+            <br><br>
+
+            <!-- City -->
+            <label for="city">City:</label>
+            <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Enter your city"
+                required
+            >
+
+            <br><br>
+
+            <!-- Website -->
+            <label for="website">Website:</label>
+            <input
+                type="url"
+                id="website"
+                name="website"
+                placeholder="https://example.com"
+            >
+
+            <br><br>
+
+            <!-- Profile Photo -->
+            <label for="photo">Upload Profile Photo:</label>
+            <input
+                type="file"
+                id="photo"
+                name="photo"
+                accept="image/*"
+            >
+
+        </fieldset>
+
+        <br>
+
+        <!-- Message -->
+        <fieldset>
+            <legend>Message</legend>
+
+            <label for="message">Your Message:</label>
+            <br>
+
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                cols="50"
+                placeholder="Enter your message..."
+                maxlength="500"
+            ></textarea>
+
+        </fieldset>
+
+        <br>
+
+        <!-- Terms -->
+        <input
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+        >
+
+        <label for="terms">
+            I agree to the terms and conditions.
+        </label>
+
+        <br><br>
+
+        <!-- Buttons -->
+        <button type="submit">Register</button>
+
+        <button type="reset">Reset</button>
+
+    </form>
+
+</body>
+
+</html>
