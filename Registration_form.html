@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+
+<body>
+
+    <h1>Student Registration Form</h1>
+
+    <form action="#" method="post">
+
+        <!-- Text Input -->
+        <label for="fullname">Full Name:</label>
+        <input 
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Enter your full name"
+            required
+            minlength="3"
+            maxlength="50"
+        >
+        <br><br>
+
+
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input 
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@gmail.com"
+            required
+        >
+        <br><br>
+
+
+        <!-- Password Input -->
+        <label for="password">Password:</label>
+        <input 
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            required
+            minlength="8"
+        >
+        <br><br>
+
+
+        <!-- Telephone Input -->
+        <label for="phone">Mobile Number:</label>
+        <input 
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="10-digit mobile number"
+            pattern="[0-9]{10}"
+            required
+        >
+        <br><br>
+
+
+        <!-- Date Input -->
+        <label for="dob">Date of Birth:</label>
+        <input 
+            type="date"
+            id="dob"
+            name="dob"
+            required
+        >
+        <br><br>
+
+
+        <!-- Number Input -->
+        <label for="age">Age:</label>
+        <input 
+            type="number"
+            id="age"
+            name="age"
+            min="18"
+            max="60"
+            required
+        >
+        <br><br>
+
+
+        <!-- Radio Buttons -->
+        <label>Gender:</label>
+
+        <input 
+            type="radio"
+            id="male"
+            name="gender"
+            value="male"
+            required
+        >
+        <label for="male">Male</label>
+
+        <input 
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+        >
+        <label for="female">Female</label>
+
+        <input 
+            type="radio"
+            id="other"
+            name="gender"
+            value="other"
+        >
+        <label for="other">Other</label>
+
+        <br><br>
+
+
+        <!-- Select / Dropdown -->
+        <label for="course">Select Course:</label>
+
+        <select id="course" name="course" required>
+            <option value="">-- Select Course --</option>
+            <option value="bca">BCA</option>
+            <option value="mca">MCA</option>
+            <option value="bsc">B.Sc.</option>
+            <option value="msc">M.Sc.</option>
+            <option value="btech">B.Tech</option>
+        </select>
+
+        <br><br>
+
+
+        <!-- Checkbox -->
+        <label>Skills:</label>
+
+        <input 
+            type="checkbox"
+            id="html"
+            name="skills"
+            value="html"
+        >
+        <label for="html">HTML</label>
+
+        <input 
+            type="checkbox"
+            id="css"
+            name="skills"
+            value="css"
+        >
+        <label for="css">CSS</label>
+
+        <input 
+            type="checkbox"
+            id="javascript"
+            name="skills"
+            value="javascript"
+        >
+        <label for="javascript">JavaScript</label>
+
+        <input 
+            type="checkbox"
+            id="php"
+            name="skills"
+            value="php"
+        >
+        <label for="php">PHP</label>
+
+        <br><br>
+
+
+        <!-- File Input -->
+        <label for="resume">Upload Resume:</label>
+        <input 
+            type="file"
+            id="resume"
+            name="resume"
+            accept=".pdf,.doc,.docx"
+            required
+        >
+        <br><br>
+
+
+        <!-- URL Input -->
+        <label for="website">Portfolio Website:</label>
+        <input 
+            type="url"
+            id="website"
+            name="website"
+            placeholder="https://example.com"
+        >
+        <br><br>
+
+
+        <!-- Color Input -->
+        <label for="color">Choose Favorite Color:</label>
+        <input 
+            type="color"
+            id="color"
+            name="color"
+        >
+        <br><br>
+
+
+        <!-- Range Input -->
+        <label for="experience">Experience Level:</label>
+        <input 
+            type="range"
+            id="experience"
+            name="experience"
+            min="0"
+            max="100"
+            step="1"
+        >
+        <br><br>
+
+
+        <!-- Time Input -->
+        <label for="available_time">Preferred Interview Time:</label>
+        <input 
+            type="time"
+            id="available_time"
+            name="available_time"
+        >
+        <br><br>
+
+
+        <!-- Address -->
+        <label for="address">Address:</label>
+        <br>
+
+        <textarea
+            id="address"
+            name="address"
+            rows="5"
+            cols="40"
+            placeholder="Enter your complete address"
+            required
+            minlength="10"
+        ></textarea>
+
+        <br><br>
+
+
+        <!-- Terms and Conditions -->
+        <input 
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+        >
+
+        <label for="terms">
+            I agree to the Terms and Conditions
+        </label>
+
+        <br><br>
+
+
+        <!-- Submit Button -->
+        <input type="submit" value="Register">
+
+        <!-- Reset Button -->
+        <input type="reset" value="Reset">
+
+    </form>
+
+</body>
+</html>
