@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flexbox Example</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        /* Flex Container */
+        .container {
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            gap: 200px;
+            flex-wrap: wrap;
+
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        /* Flex Items */
+        .box {
+            width: 200px;
+            height: 150px;
+
+            display: flex;
+            justify-content:center;
+            align-items:center;
+
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 10px;
+
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+        <div class="box">Box 4</div>
+
+    </div>
+
+</body>
+</html>
+
