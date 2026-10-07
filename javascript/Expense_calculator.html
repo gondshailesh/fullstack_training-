@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expense Calculator - JavaScript Practice</title>
+
+
+    <style>
+
+        /* ================================
+           BASIC STYLING
+           ================================ */
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            background: #f1f1f1;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .expense {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .high {
+            color: red;
+        }
+
+        .normal {
+            color: green;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <h1>Expense Calculator</h1>
+
+
+    <!-- =================================
+         INPUT SECTION
+         ================================= -->
+
+    <h3>Add Expense</h3>
+
+
+    <!-- Expense Name -->
+
+    <label>
+        Expense Name
+    </label>
+
+    <input
+        type="text"
+        id="expenseName"
+        placeholder="Example: Food"
+    >
+
+
+    <!-- Expense Amount -->
+
+    <label>
+        Expense Amount
+    </label>
+
+    <input
+        type="number"
+        id="expenseAmount"
+        placeholder="Example: 500"
+    >
+
+
+    <!-- Add Expense Button -->
+
+    <button onclick="addExpense()">
+        Add Expense
+    </button>
+
+
+    <button onclick="calculateExpenses()">
+        Calculate
+    </button>
+
+
+    <!-- =================================
+         EXPENSE LIST
+         ================================= -->
+
+    <div class="result">
+
+        <h3>Expense List</h3>
+
+        <div id="expenseList">
+            No expenses added.
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         CALCULATION RESULT
+         ================================= -->
+
+    <div class="result">
+
+        <h3>Calculation</h3>
+
+        <p id="total">
+            Total: ₹0
+        </p>
+
+        <p id="average">
+            Average: ₹0
+        </p>
+
+        <p id="highest">
+            Highest Expense: ₹0
+        </p>
+
+        <p id="lowest">
+            Lowest Expense: ₹0
+        </p>
+
+        <p id="status">
+            Status: -
+        </p>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+// ============================================================
+// JAVASCRIPT START
+// ============================================================
+
+
+// ============================================================
+// 1. ARRAY
+// ============================================================
+
+/*
+    We create an empty array.
+
+    This array will store all expenses.
+
+    Example:
+
+    expenses = [
+        500,
+        200,
+        1000
+    ];
+*/
+
+let expenses = [];
+
+
+
+// ============================================================
+// 2. ADD EXPENSE FUNCTION
+// ============================================================
+
+/*
+    A function is a block of code
+    that performs a particular task.
+
+    Here our function adds
+    an expense to the array.
+*/
+
+function addExpense() {
+
+
+    // Get expense name from input
+
+    let name =
+        document.getElementById("expenseName").value;
+
+
+    // Get expense amount
+
+    let amount =
+        Number(
+            document.getElementById("expenseAmount").value
+        );
+
+
+    // ========================================================
+    // CONDITION
+    // ========================================================
+
+    /*
+        We check whether the user
+        entered valid information.
+
+        || means OR
+    */
+
+    if (name === "" || amount <= 0) {
+
+        alert("Please enter valid expense details.");
+
+        return;
+    }
+
+
+    // ========================================================
+    // ADD EXPENSE TO ARRAY
+    // ========================================================
+
+    /*
+        We store an object inside
+        the expenses array.
+    */
+
+    expenses.push({
+
+        name: name,
+
+        amount: amount
+
+    });
+
+
+    // Clear input fields
+
+    document.getElementById("expenseName").value = "";
+
+    document.getElementById("expenseAmount").value = "";
+
+
+    // Display updated list
+
+    displayExpenses();
+
+
+}
+
+
+
+// ============================================================
+// 3. DISPLAY EXPENSES FUNCTION
+// ============================================================
+
+function displayExpenses() {
+
+
+    let list =
+        document.getElementById("expenseList");
+
+
+    // Clear old content
+
+    list.innerHTML = "";
+
+
+    // ========================================================
+    // LOOP
+    // ========================================================
+
+    /*
+        for loop runs once for
+        every expense.
+
+        i = 0
+        i = 1
+        i = 2
+        ...
+    */
+
+    for (
+        let i = 0;
+        i < expenses.length;
+        i++
+    ) {
+
+
+        // Get current expense
+
+        let expense = expenses[i];
+
+
+        // Create HTML
+
+        list.innerHTML += `
+
+            <div class="expense">
+
+                ${expense.name}
+
+                - ₹${expense.amount}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+// ============================================================
+// 4. CALCULATE TOTAL FUNCTION
+// ============================================================
+
+function calculateTotal() {
+
+
+    // Start total from zero
+
+    let total = 0;
+
+
+    // ========================================================
+    // LOOP
+    // ========================================================
+
+    for (
+        let i = 0;
+        i < expenses.length;
+        i++
+    ) {
+
+
+        /*
+            Add current expense
+            to total.
+        */
+
+        total =
+            total + expenses[i].amount;
+
+    }
+
+
+    // Return calculated total
+
+    return total;
+
+}
+
+
+
+// ============================================================
+// 5. CALCULATE AVERAGE FUNCTION
+// ============================================================
+
+function calculateAverage() {
+
+
+    /*
+        If there are no expenses,
+        average should be zero.
+    */
+
+    if (expenses.length === 0) {
+
+        return 0;
+
+    }
+
+
+    // Get total
+
+    let total =
+        calculateTotal();
+
+
+    // Calculate average
+
+    let average =
+        total / expenses.length;
+
+
+    return average;
+
+}
+
+
+
+// ============================================================
+// 6. FIND HIGHEST EXPENSE
+// ============================================================
+
+function findHighest() {
+
+
+    /*
+        If there are no expenses,
+        return zero.
+    */
+
+    if (expenses.length === 0) {
+
+        return 0;
+
+    }
+
+
+    /*
+        Assume the first expense
+        is the highest.
+    */
+
+    let highest =
+        expenses[0].amount;
+
+
+    // ========================================================
+    // LOOP
+    // ========================================================
+
+    for (
+        let i = 1;
+        i < expenses.length;
+        i++
+    ) {
+
+
+        // ====================================================
+        // CONDITION
+        // ====================================================
+
+        /*
+            Check whether the
+            current expense is greater.
+        */
+
+        if (
+            expenses[i].amount > highest
+        ) {
+
+            highest =
+                expenses[i].amount;
+
+        }
+
+    }
+
+
+    return highest;
+
+}
+
+
+
+// ============================================================
+// 7. FIND LOWEST EXPENSE
+// ============================================================
+
+function findLowest() {
+
+
+    if (expenses.length === 0) {
+
+        return 0;
+
+    }
+
+
+    /*
+        Assume first expense
+        is the lowest.
+    */
+
+    let lowest =
+        expenses[0].amount;
+
+
+    // ========================================================
+    // LOOP
+    // ========================================================
+
+    for (
+        let i = 1;
+        i < expenses.length;
+        i++
+    ) {
+
+
+        // ====================================================
+        // CONDITION
+        // ====================================================
+
+        if (
+            expenses[i].amount < lowest
+        ) {
+
+            lowest =
+                expenses[i].amount;
+
+        }
+
+    }
+
+
+    return lowest;
+
+}
+
+
+
+// ============================================================
+// 8. CHECK EXPENSE STATUS
+// ============================================================
+
+function checkExpenseStatus(total) {
+
+
+    /*
+        Here we use conditions
+        to determine spending level.
+    */
+
+
+    if (total === 0) {
+
+        return "No expenses";
+
+    }
+
+
+    else if (total <= 1000) {
+
+        return "Good! Your spending is low.";
+
+    }
+
+
+    else if (total <= 3000) {
+
+        return "Normal spending.";
+
+    }
+
+
+    else {
+
+        return "Warning! Your spending is high.";
+
+    }
+
+}
+
+
+
+// ============================================================
+// 9. MAIN CALCULATION FUNCTION
+// ============================================================
+
+function calculateExpenses() {
+
+
+    // ========================================================
+    // CONDITION
+    // ========================================================
+
+    /*
+        Check whether the array
+        contains any expenses.
+    */
+
+    if (expenses.length === 0) {
+
+        alert("Please add at least one expense.");
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // CALL FUNCTIONS
+    // ========================================================
+
+    let total =
+        calculateTotal();
+
+
+    let average =
+        calculateAverage();
+
+
+    let highest =
+        findHighest();
+
+
+    let lowest =
+        findLowest();
+
+
+    let status =
+        checkExpenseStatus(total);
+
+
+
+    // ========================================================
+    // DISPLAY RESULTS
+    // ========================================================
+
+    document.getElementById("total").innerHTML =
+
+        `Total: ₹${total}`;
+
+
+    document.getElementById("average").innerHTML =
+
+        `Average: ₹${average.toFixed(2)}`;
+
+
+    document.getElementById("highest").innerHTML =
+
+        `Highest Expense: ₹${highest}`;
+
+
+    document.getElementById("lowest").innerHTML =
+
+        `Lowest Expense: ₹${lowest}`;
+
+
+    document.getElementById("status").innerHTML =
+
+        `Status: ${status}`;
+
+}
+
+
+
+// ============================================================
+// JAVASCRIPT END
+// ============================================================
+
+
+</script>
+
+
+</body>
+
+</html>
+
