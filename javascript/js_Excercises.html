@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript From Scratch</title>
+</head>
+
+<body>
+
+    <h1>JavaScript From Scratch</h1>
+
+    <p>
+        Open Browser Console:
+        <strong>F12 → Console</strong>
+    </p>
+
+    <p>
+        We are learning:
+        Variables → Data Types → Operators → Logic
+    </p>
+
+
+    <!-- =====================================================
+         HOW TO RUN JAVASCRIPT
+         =====================================================
+
+         Method 1:
+         Put JavaScript inside <script>...</script>
+
+         Method 2:
+         Create a separate file:
+         script.js
+
+         Then connect it using:
+         <script src="script.js"></script>
+
+         Method 3:
+         Open Browser → F12 → Console
+         Then directly type JavaScript.
+
+         Example:
+         console.log("Hello JavaScript");
+    -->
+
+
+    <script>
+
+        // =====================================================
+        // 1. YOUR FIRST JAVASCRIPT PROGRAM
+        // =====================================================
+
+        console.log("Hello JavaScript!");
+
+        // console.log() is used to display output
+        // in the browser console.
+
+
+        // =====================================================
+        // 2. COMMENTS IN JAVASCRIPT
+        // =====================================================
+
+        // This is a single-line comment.
+
+        /*
+            This is a
+            multi-line comment.
+        */
+
+        console.log("Comments are ignored by JavaScript.");
+
+
+        // =====================================================
+        // 3. VARIABLES
+        // =====================================================
+
+        /*
+            A variable is a container used to store data.
+
+            Example:
+
+            let name = "Shailesh";
+
+            name = variable
+            "Shailesh" = value
+        */
+
+
+        // -----------------------------------------------------
+        // let
+        // -----------------------------------------------------
+
+        let name = "Shailesh";
+
+        console.log(name);
+
+        // We can change the value of a let variable.
+
+        name = "Rahul";
+
+        console.log(name);
+
+
+        // -----------------------------------------------------
+        // const
+        // -----------------------------------------------------
+
+        const country = "India";
+
+        console.log(country);
+
+        // const cannot be reassigned.
+
+        // country = "USA"; // ERROR
+
+
+        // -----------------------------------------------------
+        // var
+        // -----------------------------------------------------
+
+        var age = 23;
+
+        console.log(age);
+
+        // var is an older way of declaring variables.
+        // For modern JavaScript, prefer let and const.
+
+
+        // =====================================================
+        // 4. VARIABLE NAMING RULES
+        // =====================================================
+
+        let firstName = "Shailesh";
+        let studentAge = 23;
+        let _username = "gondshailesh";
+        let $price = 100;
+
+        // Valid variable names:
+        // firstName
+        // studentAge
+        // _username
+        // $price
+
+        // Invalid:
+        // let 1name = "Shailesh";
+        // let first-name = "Shailesh";
+
+        // JavaScript is case-sensitive.
+
+        let city = "Nanded";
+
+        // city and City are different variables.
+
+        let City = "Pune";
+
+
+        // =====================================================
+        // 5. DATA TYPES
+        // =====================================================
+
+        /*
+            JavaScript has several data types.
+
+            Main beginner data types:
+
+            1. String
+            2. Number
+            3. Boolean
+            4. Undefined
+            5. Null
+            6. Object
+            7. Array
+        */
+
+
+        // -----------------------------------------------------
+        // STRING
+        // -----------------------------------------------------
+
+        let first = "Shailesh";
+
+        let message = 'Hello';
+
+        console.log(first);
+        console.log(message);
+
+        // String means text.
+
+
+        // -----------------------------------------------------
+        // NUMBER
+        // -----------------------------------------------------
+
+        let marks = 75;
+        let salary = 25000;
+        let percentage = 63.97;
+
+        console.log(marks);
+        console.log(salary);
+        console.log(percentage);
+
+        // JavaScript has one main Number type
+        // for integers and decimal numbers.
+
+
+        // -----------------------------------------------------
+        // BOOLEAN
+        // -----------------------------------------------------
+
+        let isStudent = true;
+
+        let isLoggedIn = false;
+
+        console.log(isStudent);
+        console.log(isLoggedIn);
+
+        // Boolean has only two values:
+        // true
+        // false
+
+
+        // -----------------------------------------------------
+        // UNDEFINED
+        // -----------------------------------------------------
+
+        let address;
+
+        console.log(address);
+
+        // A variable declared without a value
+        // has the value undefined.
+
+
+        // -----------------------------------------------------
+        // NULL
+        // -----------------------------------------------------
+
+        let phoneNumber = null;
+
+        console.log(phoneNumber);
+
+        // null means intentionally empty/no value.
+
+
+        // -----------------------------------------------------
+        // ARRAY
+        // -----------------------------------------------------
+
+        let skills = [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "PHP",
+            "Laravel"
+        ];
+
+        console.log(skills);
+
+        // Array stores multiple values.
+
+
+        // -----------------------------------------------------
+        // OBJECT
+        // -----------------------------------------------------
+
+        let student = {
+            name: "Shailesh",
+            age: 23,
+            course: "MCA"
+        };
+
+        console.log(student);
+
+        // Object stores data in key-value pairs.
+
+
+        // =====================================================
+        // 6. typeof OPERATOR
+        // =====================================================
+
+        console.log(typeof "Hello");
+        console.log(typeof 100);
+        console.log(typeof true);
+        console.log(typeof undefined);
+        console.log(typeof null);
+
+        // typeof tells us the type of a value.
+
+
+        // =====================================================
+        // 7. ARITHMETIC OPERATORS
+        // =====================================================
+
+        let a = 20;
+        let b = 10;
+
+        // Addition
+        console.log(a + b); // 30
+
+        // Subtraction
+        console.log(a - b); // 10
+
+        // Multiplication
+        console.log(a * b); // 200
+
+        // Division
+        console.log(a / b); // 2
+
+        // Remainder
+        console.log(a % b); // 0
+
+        // Power
+        console.log(a ** 2); // 400
+
+
+        // =====================================================
+        // 8. ASSIGNMENT OPERATORS
+        // =====================================================
+
+        let number = 10;
+
+        // Assignment
+        number = 20;
+
+        // Add and assign
+        number += 5;
+
+        // Same as:
+        // number = number + 5;
+
+        console.log(number);
+
+
+        // Subtract and assign
+        number -= 5;
+
+        // Same as:
+        // number = number - 5;
+
+
+        // Multiply and assign
+        number *= 2;
+
+        // Same as:
+        // number = number * 2;
+
+
+        // Divide and assign
+        number /= 2;
+
+        // Same as:
+        // number = number / 2;
+
+
+        // =====================================================
+        // 9. COMPARISON OPERATORS
+        // =====================================================
+
+        let x = 10;
+        let y = 20;
+
+        console.log(x == y);   // false
+
+        console.log(x != y);   // true
+
+        console.log(x > y);    // false
+
+        console.log(x < y);    // true
+
+        console.log(x >= y);   // false
+
+        console.log(x <= y);   // true
+
+
+        // =====================================================
+        // 10. == VS ===
+        // =====================================================
+
+        /*
+            == checks value after type conversion.
+
+            === checks BOTH:
+            value AND data type.
+
+            Prefer === in modern JavaScript.
+        */
+
+        console.log(10 == "10");   // true
+
+        console.log(10 === "10");  // false
+
+
+        // =====================================================
+        // 11. LOGICAL OPERATORS
+        // =====================================================
+
+        /*
+            &&  AND
+            ||  OR
+            !   NOT
+        */
+
+
+        // AND
+
+        console.log(true && true);   // true
+        console.log(true && false);  // false
+
+
+        // OR
+
+        console.log(true || false);  // true
+        console.log(false || false); // false
+
+
+        // NOT
+
+        console.log(!true);  // false
+        console.log(!false); // true
+
+
+        // =====================================================
+        // 12. STRING CONCATENATION
+        // =====================================================
+
+        let firstName2 = "Shailesh";
+        let lastName = "Gond";
+
+        let fullName = firstName2 + " " + lastName;
+
+        console.log(fullName);
+
+
+        // =====================================================
+        // 13. TEMPLATE LITERALS
+        // =====================================================
+
+        let personName = "Shailesh";
+        let personAge = 23;
+
+        console.log(`My name is ${personName}`);
+        console.log(`I am ${personAge} years old.`);
+
+        // Template literals use backticks ` `
+
+
+        // =====================================================
+        // 14. SIMPLE CALCULATOR
+        // =====================================================
+
+        let num1 = 50;
+        let num2 = 10;
+
+        console.log("Addition:", num1 + num2);
+        console.log("Subtraction:", num1 - num2);
+        console.log("Multiplication:", num1 * num2);
+        console.log("Division:", num1 / num2);
+        console.log("Remainder:", num1 % num2);
+
+
+        // =====================================================
+        // 15. PRACTICE EXERCISE 1
+        // =====================================================
+
+        /*
+            Create variables:
+
+            name = your name
+            age = your age
+            city = your city
+
+            Then print:
+
+            My name is ______.
+            I am ______ years old.
+            I live in ______.
+        */
+
+        // TRY YOURSELF HERE
+
+
+        // =====================================================
+        // 16. PRACTICE EXERCISE 2
+        // =====================================================
+
+        /*
+            Create two numbers.
+
+            Example:
+
+            let number1 = 25;
+            let number2 = 5;
+
+            Find:
+
+            1. Addition
+            2. Subtraction
+            3. Multiplication
+            4. Division
+            5. Remainder
+        */
+
+        // TRY YOURSELF HERE
+
+
+        // =====================================================
+        // 17. PRACTICE EXERCISE 3
+        // =====================================================
+
+        /*
+            Calculate the area of a rectangle.
+
+            Formula:
+
+            area = length × width
+
+            Example:
+
+            length = 10
+            width = 5
+
+            Expected answer:
+
+            50
+        */
+
+        // TRY YOURSELF HERE
+
+
+        // =====================================================
+        // 18. PRACTICE EXERCISE 4
+        // =====================================================
+
+        /*
+            Calculate your age after 5 years.
+
+            Example:
+
+            age = 23
+
+            Expected:
+
+            28
+        */
+
+        // TRY YOURSELF HERE
+
+
+        // =====================================================
+        // 19. PRACTICE EXERCISE 5
+        // =====================================================
+
+        /*
+            Calculate total marks.
+
+            Subjects:
+
+            English = 70
+            JavaScript = 80
+            PHP = 75
+
+            Calculate:
+
+            total marks
+        */
+
+        // TRY YOURSELF HERE
+
+
+        // =====================================================
+        // 20. PRACTICE EXERCISE 6
+        // =====================================================
+
+        /*
+            Calculate percentage.
+
+            Suppose:
+
+            totalMarks = 225
+            maximumMarks = 300
+
+            Formula:
+
+            percentage =
+            (totalMarks / maximumMarks) * 100
+        */
+
+        // TRY YOURSELF HERE
+
+
+        // =====================================================
+        // 21. PRACTICE EXERCISE 7
+        // =====================================================
+
+        /*
+            Predict the output.
+
+            Do NOT run the code first.
+
+            What will be printed?
+
+            let a = 10;
+            let b = 5;
+
+            console.log(a + b);
+            console.log(a * b);
+            console.log(a - b);
+        */
+
+        // Answer:
+        // 15
+        // 50
+        // 5
+
+
+        // =====================================================
+        // 22. LOGIC BUILDING QUESTION 1
+        // =====================================================
+
+        /*
+            You have:
+
+            let price = 500;
+            let quantity = 3;
+
+            Calculate the total price.
+
+            Formula:
+
+            total = price × quantity
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 23. LOGIC BUILDING QUESTION 2
+        // =====================================================
+
+        /*
+            A product costs ₹1000.
+
+            Discount = ₹200.
+
+            Calculate final price.
+
+            Formula:
+
+            finalPrice = price - discount
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 24. LOGIC BUILDING QUESTION 3
+        // =====================================================
+
+        /*
+            You have:
+
+            let totalBill = 1200;
+            let people = 4;
+
+            Calculate how much each person should pay.
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 25. LOGIC BUILDING QUESTION 4
+        // =====================================================
+
+        /*
+            Convert hours into minutes.
+
+            Example:
+
+            hours = 3
+
+            Formula:
+
+            minutes = hours × 60
+
+            Expected:
+
+            180
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 26. LOGIC BUILDING QUESTION 5
+        // =====================================================
+
+        /*
+            Convert minutes into seconds.
+
+            Example:
+
+            minutes = 5
+
+            Formula:
+
+            seconds = minutes × 60
+
+            Expected:
+
+            300
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 27. LOGIC BUILDING QUESTION 6
+        // =====================================================
+
+        /*
+            Find the remainder.
+
+            Example:
+
+            number = 17
+            divisor = 5
+
+            What is the remainder?
+
+            Hint:
+
+            Use %
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 28. LOGIC BUILDING QUESTION 7
+        // =====================================================
+
+        /*
+            Check whether two numbers are equal.
+
+            Example:
+
+            number1 = 10
+            number2 = 10
+
+            Use:
+
+            ===
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 29. LOGIC BUILDING QUESTION 8
+        // =====================================================
+
+        /*
+            Check whether a person is eligible to vote.
+
+            age = 20
+
+            For now, only think about the condition:
+
+            age >= 18
+
+            We will learn if/else next.
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 30. LOGIC BUILDING QUESTION 9
+        // =====================================================
+
+        /*
+            Student marks:
+
+            English = 70
+            Maths = 80
+            Science = 90
+
+            Find:
+
+            1. Total
+            2. Average
+
+            Formula:
+
+            total = English + Maths + Science
+
+            average = total / 3
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 31. LOGIC BUILDING QUESTION 10
+        // =====================================================
+
+        /*
+            Shopping problem:
+
+            Shirt price = 800
+            Pant price = 1200
+            Shoes price = 1500
+
+            Find:
+
+            1. Total amount
+            2. If you have ₹4000,
+               how much money remains?
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // 32. MINI CHALLENGE
+        // =====================================================
+
+        /*
+            Create a student profile.
+
+            Store:
+
+            name
+            age
+            course
+            college
+            percentage
+            isGraduated
+
+            Example:
+
+            name = "Shailesh"
+            age = 23
+            course = "MCA"
+            college = "SRTM University"
+            percentage = 63.97
+            isGraduated = true
+
+            Print all information.
+        */
+
+        // TRY YOURSELF
+
+
+        // =====================================================
+        // IMPORTANT BEGINNER RULE
+        // =====================================================
+
+        /*
+            DO NOT TRY TO MEMORIZE EVERYTHING.
+
+            Learn these first:
+
+            1. let
+            2. const
+            3. String
+            4. Number
+            5. Boolean
+            6. console.log()
+            7. +  -  *  /  %
+            8. == and ===
+            9. >  <  >=  <=
+            10. &&  ||  !
+
+            Practice by writing code yourself.
+        */
+
+
+    </script>
+
+</body>
+</html>
+

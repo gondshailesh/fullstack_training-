@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expense Tracker</title>
+
+    <style>
+
+        /* =====================================================
+           BASIC RESET
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           BODY
+           ===================================================== */
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #333;
+            padding: 30px;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+           ===================================================== */
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           HEADING
+           ===================================================== */
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           SUMMARY CARDS
+           ===================================================== */
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .card p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           FORM
+           ===================================================== */
+
+        .form-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .add-btn {
+            width: 100%;
+            background: #222;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #444;
+        }
+
+
+        /* =====================================================
+           EXPENSE LIST
+           ===================================================== */
+
+        .expense-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .expense-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .expense-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .expense-info p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .expense-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .amount {
+            font-weight: bold;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+
+        /* =====================================================
+           EMPTY MESSAGE
+           ===================================================== */
+
+        .empty-message {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+        }
+
+
+        /* =====================================================
+           MOBILE RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .expense-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .expense-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            body {
+                padding: 15px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- =================================================
+             PAGE TITLE
+             ================================================= -->
+
+        <h1>Expense Tracker</h1>
+
+
+        <!-- =================================================
+             SUMMARY
+             ================================================= -->
+
+        <div class="summary">
+
+            <!-- Total Expenses -->
+            <div class="card">
+                <h3>Total Expenses</h3>
+
+                <p>
+                    ₹<span id="totalExpense">0</span>
+                </p>
+            </div>
+
+
+            <!-- Number of Expenses -->
+            <div class="card">
+                <h3>Total Transactions</h3>
+
+                <p id="totalTransactions">
+                    0
+                </p>
+            </div>
+
+
+            <!-- Average Expense -->
+            <div class="card">
+                <h3>Average Expense</h3>
+
+                <p>
+                    ₹<span id="averageExpense">0</span>
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ADD EXPENSE FORM
+             ================================================= -->
+
+        <div class="form-box">
+
+            <h2>Add Expense</h2>
+
+
+            <!-- Expense Name -->
+
+            <div class="form-group">
+
+                <label for="expenseName">
+                    Expense Name
+                </label>
+
+                <input
+                    type="text"
+                    id="expenseName"
+                    placeholder="Example: Grocery"
+                >
+
+            </div>
+
+
+            <!-- Expense Amount -->
+
+            <div class="form-group">
+
+                <label for="expenseAmount">
+                    Amount
+                </label>
+
+                <input
+                    type="number"
+                    id="expenseAmount"
+                    placeholder="Example: 500"
+                >
+
+            </div>
+
+
+            <!-- Expense Category -->
+
+            <div class="form-group">
+
+                <label for="expenseCategory">
+                    Category
+                </label>
+
+                <select id="expenseCategory">
+
+                    <option value="Food">
+                        Food
+                    </option>
+
+                    <option value="Travel">
+                        Travel
+                    </option>
+
+                    <option value="Shopping">
+                        Shopping
+                    </option>
+
+                    <option value="Bills">
+                        Bills
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Add Button -->
+
+            <button
+                class="add-btn"
+                onclick="addExpense()"
+            >
+                Add Expense
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             EXPENSE LIST
+             ================================================= -->
+
+        <div class="expense-box">
+
+            <h2>Expense History</h2>
+
+            <!--
+                JavaScript will add expenses here.
+            -->
+
+            <div id="expenseList">
+
+                <p class="empty-message">
+                    No expenses added yet.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script>
+
+        // =====================================================
+        // 1. CREATE AN ARRAY
+        // =====================================================
+
+        /*
+            We will store all expenses inside this array.
+
+            Example expense:
+
+            {
+                id: 1,
+                name: "Grocery",
+                amount: 500,
+                category: "Food"
+            }
+        */
+
+        let expenses = [];
+
+
+        // =====================================================
+        // 2. GET HTML ELEMENTS
+        // =====================================================
+
+        /*
+            document.getElementById()
+            finds an HTML element using its id.
+        */
+
+        const expenseName =
+            document.getElementById("expenseName");
+
+        const expenseAmount =
+            document.getElementById("expenseAmount");
+
+        const expenseCategory =
+            document.getElementById("expenseCategory");
+
+        const expenseList =
+            document.getElementById("expenseList");
+
+        const totalExpense =
+            document.getElementById("totalExpense");
+
+        const totalTransactions =
+            document.getElementById("totalTransactions");
+
+        const averageExpense =
+            document.getElementById("averageExpense");
+
+
+        // =====================================================
+        // 3. ADD EXPENSE FUNCTION
+        // =====================================================
+
+        function addExpense() {
+
+            /*
+                Get values entered by the user.
+            */
+
+            let name = expenseName.value;
+
+            let amount = Number(expenseAmount.value);
+
+            let category = expenseCategory.value;
+
+
+            // =================================================
+            // VALIDATION
+            // =================================================
+
+            /*
+                Check whether name or amount is empty.
+            */
+
+            if (name === "" || amount <= 0) {
+
+                alert("Please enter a valid expense.");
+
+                return;
+            }
+
+
+            // =================================================
+            // CREATE EXPENSE OBJECT
+            // =================================================
+
+            let expense = {
+
+                // Generate unique ID
+                id: Date.now(),
+
+                // Expense name
+                name: name,
+
+                // Expense amount
+                amount: amount,
+
+                // Expense category
+                category: category
+            };
+
+
+            // =================================================
+            // ADD OBJECT TO ARRAY
+            // =================================================
+
+            expenses.push(expense);
+
+
+            // =================================================
+            // CLEAR FORM
+            // =================================================
+
+            expenseName.value = "";
+
+            expenseAmount.value = "";
+
+
+            // =================================================
+            // DISPLAY EXPENSES
+            // =================================================
+
+            displayExpenses();
+
+
+            // =================================================
+            // UPDATE SUMMARY
+            // =================================================
+
+            updateSummary();
+
+        }
+
+
+        // =====================================================
+        // 4. DISPLAY EXPENSES
+        // =====================================================
+
+        function displayExpenses() {
+
+            /*
+                First clear the existing list.
+
+                We will rebuild the list using the
+                latest data from the array.
+            */
+
+            expenseList.innerHTML = "";
+
+
+            // =================================================
+            // CHECK EMPTY ARRAY
+            // =================================================
+
+            if (expenses.length === 0) {
+
+                expenseList.innerHTML = `
+                    <p class="empty-message">
+                        No expenses added yet.
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            // =================================================
+            // LOOP THROUGH EXPENSES
+            // =================================================
+
+            expenses.forEach(function(expense) {
+
+                /*
+                    Create HTML for each expense.
+                */
+
+                let expenseHTML = `
+
+                    <div class="expense-item">
+
+                        <div class="expense-info">
+
+                            <h3>
+                                ${expense.name}
+                            </h3>
+
+                            <p>
+                                Category:
+                                ${expense.category}
+                            </p>
+
+                        </div>
+
+
+                        <div class="expense-right">
+
+                            <span class="amount">
+                                ₹${expense.amount}
+                            </span>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteExpense(${expense.id})"
+                            >
+                                Delete
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                /*
+                    Add the HTML to the page.
+                */
+
+                expenseList.innerHTML += expenseHTML;
+
+            });
+
+        }
+
+
+        // =====================================================
+        // 5. DELETE EXPENSE
+        // =====================================================
+
+        function deleteExpense(id) {
+
+            /*
+                filter() creates a new array.
+
+                We keep every expense whose ID
+                does NOT match the ID we want to delete.
+            */
+
+            expenses = expenses.filter(function(expense) {
+
+                return expense.id !== id;
+
+            });
+
+
+            // Display updated list
+
+            displayExpenses();
+
+
+            // Update calculations
+
+            updateSummary();
+
+        }
+
+
+        // =====================================================
+        // 6. UPDATE SUMMARY
+        // =====================================================
+
+        function updateSummary() {
+
+            // =================================================
+            // TOTAL EXPENSE
+            // =================================================
+
+            let total = 0;
+
+
+            /*
+                Add every expense amount.
+            */
+
+            expenses.forEach(function(expense) {
+
+                total = total + expense.amount;
+
+            });
+
+
+            // Display total
+
+            totalExpense.textContent = total;
+
+
+            // =================================================
+            // TOTAL TRANSACTIONS
+            // =================================================
+
+            let transactionCount = expenses.length;
+
+            totalTransactions.textContent =
+                transactionCount;
+
+
+            // =================================================
+            // AVERAGE EXPENSE
+            // =================================================
+
+            let average = 0;
+
+
+            /*
+                Avoid division by zero.
+            */
+
+            if (transactionCount > 0) {
+
+                average = total / transactionCount;
+
+            }
+
+
+            /*
+                toFixed(2) means:
+                show maximum 2 digits after decimal.
+            */
+
+            averageExpense.textContent =
+                average.toFixed(2);
+
+        }
+
+
+        // =====================================================
+        // 7. INITIAL DISPLAY
+        // =====================================================
+
+        /*
+            Run these functions when the page loads.
+        */
+
+        displayExpenses();
+
+        updateSummary();
+
+
+    </script>
+
+</body>
+</html>
+
