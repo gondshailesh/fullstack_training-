@@ -1,0 +1,528 @@
+============================================================
+             EXPENSE DATA MANAGEMENT SYSTEM
+============================================================
+
+Create a single-page Expense Management application.
+
+Use:
+
+HTML
+CSS
+JavaScript
+
+JavaScript topics:
+
+Variables
+Objects
+Arrays
+Functions
+DOM
+Events
+map()
+filter()
+find()
+findIndex()
+reduce()
+sort()
+some()
+every()
+includes()
+============================================================
+
+
+1. EXPENSE OBJECT
+------------------------------------------------------------
+
+Create an expense object containing:
+
+id
+title
+amount
+category
+date
+description
+
+Create an array to store multiple expense objects.
+
+
+2. ADD EXPENSE
+------------------------------------------------------------
+
+Create a form containing:
+
+Expense Title
+Amount
+Category
+Date
+Description
+Add Expense button
+
+When the user submits the form:
+
+- Create an expense object.
+- Add it to the expenses array.
+- Clear the form.
+- Display the expense.
+
+
+3. DISPLAY EXPENSES
+------------------------------------------------------------
+
+Display all expenses on the webpage.
+
+Show:
+
+ID
+Title
+Amount
+Category
+Date
+Description
+Actions
+
+Each expense should have:
+
+Edit button
+Delete button
+
+
+4. DELETE EXPENSE
+------------------------------------------------------------
+
+Delete an expense using its ID.
+
+After deleting:
+
+- Update the array.
+- Refresh the expense list.
+- Update the dashboard.
+
+
+5. TOTAL EXPENSE
+------------------------------------------------------------
+
+Calculate the total amount of all expenses.
+
+Display:
+
+Total Expenses: ₹________
+
+Use reduce().
+
+
+6. AVERAGE EXPENSE
+------------------------------------------------------------
+
+Calculate the average expense.
+
+Formula:
+
+Average =
+Total Expenses / Number of Expenses
+
+Handle the case when there are no expenses.
+
+
+7. HIGHEST EXPENSE
+------------------------------------------------------------
+
+Find the expense with the highest amount.
+
+Display:
+
+Expense name
+Amount
+Category
+
+
+8. LOWEST EXPENSE
+------------------------------------------------------------
+
+Find the expense with the lowest amount.
+
+Display:
+
+Expense name
+Amount
+Category
+
+
+9. SEARCH EXPENSE
+------------------------------------------------------------
+
+Create a search input.
+
+Search by:
+
+Title
+Category
+Description
+
+Display only matching expenses.
+
+Use:
+
+filter()
+includes()
+
+
+10. CATEGORY FILTER
+------------------------------------------------------------
+
+Create a category dropdown.
+
+Categories:
+
+Food
+Travel
+Shopping
+Bills
+Education
+Health
+Entertainment
+Other
+
+When the user selects a category,
+display only expenses from that category.
+
+Use filter().
+
+
+11. AMOUNT FILTER
+------------------------------------------------------------
+
+Create:
+
+Minimum Amount
+Maximum Amount
+
+Display expenses whose amount
+falls inside the selected range.
+
+Use filter().
+
+
+12. SORT EXPENSES
+------------------------------------------------------------
+
+Create a sorting dropdown.
+
+Options:
+
+Amount: Low → High
+Amount: High → Low
+Title: A → Z
+Title: Z → A
+Newest → Oldest
+Oldest → Newest
+
+Use sort().
+
+
+13. EDIT EXPENSE
+------------------------------------------------------------
+
+Create an Edit button.
+
+When Edit is clicked:
+
+- Load expense data into the form.
+- Allow modification.
+- Update the original expense.
+- Display the updated expense.
+
+Use:
+
+findIndex()
+
+
+14. CATEGORY TOTAL
+------------------------------------------------------------
+
+Calculate total spending for each category.
+
+Example:
+
+Food          ₹2500
+Travel        ₹4500
+Shopping      ₹3200
+Bills         ₹1800
+
+Calculate these values dynamically.
+
+Do not manually enter the totals.
+
+
+15. CATEGORY COUNT
+------------------------------------------------------------
+
+Display the number of expenses
+inside each category.
+
+Example:
+
+Food: 5
+Travel: 3
+Shopping: 4
+
+
+16. DATE FILTER
+------------------------------------------------------------
+
+Create:
+
+Start Date
+End Date
+
+Display expenses that fall
+between the selected dates.
+
+
+17. EXPENSE DASHBOARD
+------------------------------------------------------------
+
+Create dashboard cards displaying:
+
+Total Expenses
+Number of Expenses
+Average Expense
+Highest Expense
+Lowest Expense
+
+
+18. CHECK EXPENSE
+------------------------------------------------------------
+
+Use some() to check:
+
+"Is there any expense greater than ₹10,000?"
+
+Display:
+
+Yes
+or
+No
+
+
+19. VALIDATE EXPENSES
+------------------------------------------------------------
+
+Use every() to check:
+
+"Are all expenses greater than ₹0?"
+
+Display the result.
+
+
+20. CLEAR ALL
+------------------------------------------------------------
+
+Create a Clear All button.
+
+When clicked:
+
+- Ask for confirmation.
+- Remove all expenses.
+- Clear the dashboard.
+- Clear the expense list.
+
+Display:
+
+"No expenses found."
+
+
+============================================================
+                 ARRAY METHODS CHALLENGE
+============================================================
+
+Use the correct array method for each task.
+
+21. Get only expense amounts.
+
+Use:
+map()
+
+
+22. Get only Food expenses.
+
+Use:
+filter()
+
+
+23. Find one expense using its ID.
+
+Use:
+find()
+
+
+24. Find the position/index of an expense.
+
+Use:
+findIndex()
+
+
+25. Calculate total expenses.
+
+Use:
+reduce()
+
+
+26. Calculate category-wise totals.
+
+Use:
+reduce()
+
+
+27. Sort expenses by amount.
+
+Use:
+sort()
+
+
+28. Check whether any expense is above ₹10,000.
+
+Use:
+some()
+
+
+29. Check whether every expense is greater than ₹0.
+
+Use:
+every()
+
+
+30. Search whether an expense title contains
+a particular word.
+
+Use:
+includes()
+
+
+============================================================
+                    FINAL CHALLENGE
+============================================================
+
+31. COMPLETE EXPENSE MANAGEMENT SYSTEM
+------------------------------------------------------------
+
+Create a complete single-page application
+with all of the following:
+
+ADD EXPENSE
+EDIT EXPENSE
+DELETE EXPENSE
+SEARCH EXPENSE
+FILTER BY CATEGORY
+FILTER BY AMOUNT
+FILTER BY DATE
+SORT EXPENSES
+TOTAL EXPENSE
+AVERAGE EXPENSE
+HIGHEST EXPENSE
+LOWEST EXPENSE
+CATEGORY TOTAL
+CATEGORY COUNT
+CLEAR ALL
+
+
+Your page should contain:
+
+------------------------------------------------------------
+
+HEADER
+    Expense Management
+
+DASHBOARD
+    Total Expenses
+    Expense Count
+    Average Expense
+    Highest Expense
+    Lowest Expense
+
+ADD EXPENSE FORM
+    Title
+    Amount
+    Category
+    Date
+    Description
+    Add / Update button
+
+SEARCH & FILTER
+    Search
+    Category
+    Minimum Amount
+    Maximum Amount
+    Start Date
+    End Date
+    Sort
+
+EXPENSE TABLE
+    ID
+    Title
+    Amount
+    Category
+    Date
+    Description
+    Edit
+    Delete
+
+CATEGORY SUMMARY
+    Category
+    Number of Expenses
+    Total Amount
+
+------------------------------------------------------------
+
+
+IMPORTANT:
+
+Do NOT use localStorage initially.
+
+First complete the project using only:
+
+HTML
+CSS
+JavaScript
+Arrays
+Objects
+Functions
+DOM
+Events
+Array Methods
+
+After completing it, add localStorage as the
+next level.
+
+
+============================================================
+                  LEARNING GOAL
+============================================================
+
+By completing this project, you should understand:
+
+Object
+    ↓
+Array of Objects
+    ↓
+Functions
+    ↓
+DOM
+    ↓
+Events
+    ↓
+map()
+filter()
+find()
+findIndex()
+reduce()
+sort()
+some()
+every()
+includes()
+    ↓
+Complete JavaScript Application
+============================================================
+
+
+
+Road map to create Expense data management using array object and  Methods
