@@ -296,20 +296,90 @@ console.log( 40 <= Student_mark );
 let person_age = 50;
 console.log( person_age <= 18 && person_age <= 60 )
 
+
 // Q47. Check whether a student passed both subjects.
+
+// Marks in two subjects
+let subject1 = 65;
+let subject2 = 45;
+
+// Both subjects must have marks >= 35
+let passedBoth = subject1 >= 35 && subject2 >= 35;
+
+console.log("Q47 - Passed both subjects:", passedBoth);
+// Output: true
+
 
 // Q48. Check whether a student passed at least one subject.
 
+let maths = 25;
+let science = 60;
+
+// At least one subject must have marks >= 35
+let passedOne = maths >= 35 || science >= 35;
+
+console.log("Q48 - Passed at least one subject:", passedOne);
+// Output: true
+
+
 // Q49. Check whether a user is logged in.
+
+let isLoggedIn = true;
+
+// Check whether the login status is true
+if (isLoggedIn === true) {
+    console.log("Q49 - User is logged in");
+} else {
+    console.log("Q49 - User is not logged in");
+}
+// Output: User is logged in
+
 
 // Q50. Check whether a number is between 10 and 50.
 
+let number = 30;
+
+// Number must be >= 10 AND <= 50
+let isBetween = number >= 10 && number <= 50;
+
+console.log("Q50 - Number is between 10 and 50:", isBetween);
+// Output: true
+
+
 // Q51. Check whether a person is eligible for a job.
-//      Age should be 18 or above AND qualification should be MCA.
+// Age should be 18 or above AND qualification should be MCA.
+
+ age = 23;
+let qualification = "MCA";
+
+// Both conditions must be satisfied
+let isEligible = age >= 18 && qualification === "MCA";
+
+console.log("Q51 - Eligible for job:", isEligible);
+// Output: true
+
 
 // Q52. Check whether today is Saturday OR Sunday.
 
+// Change this value to test other days
+let today = "Saturday";
+
+// The day must be Saturday OR Sunday
+let isWeekend = today === "Saturday" || today === "Sunday";
+
+console.log("Q52 - Is weekend:", isWeekend);
+// Output: true
+
+
 // Q53. Use ! to reverse a Boolean value.
+
+let isRaining = true;
+
+// The ! operator reverses true to false
+let isNotRaining = !isRaining;
+
+console.log("Q53 - Is it not raining?", isNotRaining);
+// Output: false
 
 
 // =====================
