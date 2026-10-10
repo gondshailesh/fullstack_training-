@@ -381,32 +381,142 @@ let isNotRaining = !isRaining;
 console.log("Q53 - Is it not raining?", isNotRaining);
 // Output: false
 
-
-// =====================
-// 7. BASIC LOGIC PROBLEMS
-// =====================
-
 // Q54. Check whether a number is positive or negative.
+
+let num54 = -10;
+
+if (num54 >= 0) {
+    console.log("Positive number");
+} else {
+    console.log("Negative number");
+}
+
 
 // Q55. Check whether a number is even or odd.
 
+let num55 = 7;
+
+if (num55 % 2 === 0) {
+    console.log("Even number");
+} else {
+    console.log("Odd number");
+}
+
+
 // Q56. Find the largest of two numbers.
+
+let a56 = 20;
+let b56 = 15;
+
+if (a56 > b56) {
+    console.log(a56 + " is largest");
+} else if (b56 > a56) {
+    console.log(b56 + " is largest");
+} else {
+    console.log("Both numbers are equal");
+}
+
 
 // Q57. Find the smallest of two numbers.
 
+let a57 = 10;
+let b57 = 25;
+
+if (a57 < b57) {
+    console.log(a57 + " is smallest");
+} else if (b57 < a57) {
+    console.log(b57 + " is smallest");
+} else {
+    console.log("Both numbers are equal");
+}
+
+
 // Q58. Find the largest of three numbers.
+
+let a58 = 10;
+let b58 = 30;
+let c58 = 20;
+
+if (a58 >= b58 && a58 >= c58) {
+    console.log(a58 + " is largest");
+} else if (b58 >= a58 && b58 >= c58) {
+    console.log(b58 + " is largest");
+} else {
+    console.log(c58 + " is largest");
+}
+
 
 // Q59. Find the smallest of three numbers.
 
+let a59 = 10;
+let b59 = 30;
+let c59 = 5;
+
+if (a59 <= b59 && a59 <= c59) {
+    console.log(a59 + " is smallest");
+} else if (b59 <= a59 && b59 <= c59) {
+    console.log(b59 + " is smallest");
+} else {
+    console.log(c59 + " is smallest");
+}
+
+
 // Q60. Check whether a person is eligible to vote.
 
+let age60 = 20;
+
+if (age60 >= 18) {
+    console.log("Eligible to vote");
+} else {
+    console.log("Not eligible to vote");
+}
+
+
 // Q61. Check whether a student has passed or failed.
+// Assume 35 marks is the passing mark.
+
+let marks61 = 60;
+
+if (marks61 >= 35) {
+    console.log("Passed");
+} else {
+    console.log("Failed");
+}
+
 
 // Q62. Check whether a number is divisible by 5.
 
+let num62 = 25;
+
+if (num62 % 5 === 0) {
+    console.log("Divisible by 5");
+} else {
+    console.log("Not divisible by 5");
+}
+
+
 // Q63. Check whether a number is divisible by both 3 and 5.
 
+let num63 = 30;
+
+if (num63 % 3 === 0 && num63 % 5 === 0) {
+    console.log("Divisible by both 3 and 5");
+} else {
+    console.log("Not divisible by both 3 and 5");
+}
+
+
 // Q64. Check whether a number is zero, positive, or negative.
+
+let num64 = 0;
+
+if (num64 > 0) {
+    console.log("Positive number");
+} else if (num64 < 0) {
+    console.log("Negative number");
+} else {
+    console.log("Number is zero");
+}
 
 
 // =====================
