@@ -1,725 +1,557 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>90 Practice questions </title>
+    <title>JavaScript Practice Questions 1-80</title>
 </head>
 <body>
-    
-</body>
-<script>
-// =====================================================
-// JAVASCRIPT PRACTICE QUESTIONS
-// Topics: Variables, Data Types, Operators & Logic
-// =====================================================
+    <h1>JavaScript Practice Questions 1–80</h1>
+    <p>Open the browser console using F12 to see the answers.</p>
 
+    <script>
+"use strict";
 
-// =====================
+// ==========================================
 // 1. VARIABLES
-// =====================
+// ==========================================
 
 // Q1. Create a variable to store your name.
-let name ="shaileh";
-console.log(name);
-// Q2. Create variables for your age, city, and course. 
-let age = 24;
-let city ="nanded";
-let course ="master of computer application";
+let name = "Shailesh";
+console.log("Q1 - Name:", name);
 
-console.log(age,city,course);
+// Q2. Create variables for age, city, and course.
+let age = 24;
+let city = "Nanded";
+let course = "Master of Computer Applications";
+console.log("Q2 - Age, City, Course:", age, city, course);
 
 // Q3. Create a variable using let and change its value.
-
-let First_name ="name= shailesh";
-console.log(First_name);
-    First_name= "kishan";
-    console.log(First_name);
+let firstName = "Shailesh";
+console.log("Q3 - Original name:", firstName);
+firstName = "Kishan";
+console.log("Q3 - Updated name:", firstName);
 
 // Q4. Create a variable using const.
-const adhar = 715490688430;
-console.log(adhar);
+const dummyId = "123456789012";
+console.log("Q4 - Dummy ID:", dummyId);
 
 // Q5. Create three variables and print all three.
-let Iscomputeron =true;
-let attendance =85;
-let Username ="shyam";
-console.log("iscomputeron= "+Iscomputeron,"attendance= "+ attendance,"Username= "+Username);
+let isComputerOn = true;
+let attendance = 85;
+let username = "Shyam";
+console.log("Q5 - Computer:", isComputerOn,
+    "Attendance:", attendance, "Username:", username);
+
 // Q6. Create two variables and swap their values.
-   let a = 10;
-   let b = 20;
-   
-   let c = a;  // putting a's value in c
-   a = b;      // putting b's value in a
-   b = c;      // putting c's  means indirectly a's value in b
-   
-   console.log(a, b);
+let a = 10;
+let b = 20;
+let temp = a;
+a = b;
+b = temp;
+console.log("Q6 - Swapped values:", a, b);
 
-// Q7. Create variables for your name, age, city, and course
-//     and print them in one console.log().
-
-let myname = "shailesh";
-let myage = 24;
-let mycity = "Nanded";
-let mycourse =" MCA";
-
-console.log(myname,myage,mycity,mycourse);
+// Q7. Create and print name, age, city, and course.
+let myName = "Shailesh";
+let myAge = 24;
+let myCity = "Nanded";
+let myCourse = "MCA";
+console.log("Q7 - Details:", myName, myAge, myCity, myCourse);
 
 
-
-
-// =====================
+// ==========================================
 // 2. DATA TYPES
-// =====================
+// ==========================================
 
 // Q8. Create a String variable.
-
-let message ="hello good afternoon  guys"
-console.log(message);
+let message = "Hello, good afternoon guys";
+console.log("Q8 - String:", message);
 
 // Q9. Create a Number variable.
+let yourAge = 33;
+console.log("Q9 - Number:", yourAge);
 
-let your_age =33;
-console.log(your_age);
 // Q10. Create a Boolean variable.
-let Is_married =true;
-console.log(Is_married);
+let isMarried = true;
+console.log("Q10 - Boolean:", isMarried);
+
 // Q11. Create an Undefined variable.
-let underined_varible;
-console.log(underined_varible   );
+let undefinedVariable;
+console.log("Q11 - Undefined:", undefinedVariable);
+
 // Q12. Create a Null variable.
-let nullvarible =null;
-console.log(nullvarible);
-// Q13. Use typeof to check the data type of different variables.
-console.log(typeof your_age,typeof Is_married,typeof underined_varible, typeof nullvarible, typeof message);
-// Q14. Check the difference between:
-//     10 and "10"
-    a=10;
-    console.log(typeof a);
-    a="10";
-    console.log(typeof a);
+let nullVariable = null;
+console.log("Q12 - Null:", nullVariable);
 
-// Q15. Create variables of different data types
-// and print their types using typeof
+// Q13. Check data types using typeof.
+console.log("Q13 - Types:",
+    typeof yourAge,
+    typeof isMarried,
+    typeof undefinedVariable,
+    typeof nullVariable,
+    typeof message);
 
-name = "Shailesh";       // String
-age = 24;                // Number
-isStudent = true;        // Boolean
-let result;                  // Undefined
-let value = null;            // Null
+// Q14. Compare 10 and "10" using typeof.
+let comparisonValue = 10;
+console.log("Q14 - Number type:", typeof comparisonValue);
+comparisonValue = "10";
+console.log("Q14 - String type:", typeof comparisonValue);
 
-console.log(typeof name);
-console.log(typeof age);
-console.log(typeof isStudent);
-console.log(typeof result);
-console.log(typeof value);
+// Q15. Create variables of different data types.
+let studentName = "Shailesh";
+let studentAge = 24;
+let isStudent = true;
+let result;
+let value = null;
 
-// =====================
+console.log("Q15 - Name type:", typeof studentName);
+console.log("Q15 - Age type:", typeof studentAge);
+console.log("Q15 - Student type:", typeof isStudent);
+console.log("Q15 - Result type:", typeof result);
+console.log("Q15 - Null type:", typeof value);
+
+
+// ==========================================
 // 3. ARITHMETIC OPERATORS
-// =====================
+// ==========================================
+
 // Q16. Add two numbers.
-
 let teenage = 17;
-
-console.log(teenage + age);
-
+console.log("Q16 - Addition:", teenage + studentAge);
 
 // Q17. Subtract two numbers.
-
-console.log(age - teenage);
-
+console.log("Q17 - Subtraction:", studentAge - teenage);
 
 // Q18. Multiply two numbers.
-
-console.log(a * b);
-
+console.log("Q18 - Multiplication:", a * b);
 
 // Q19. Divide two numbers.
-
 let numa = 100;
-
 let numb = 5;
-
-console.log(numa / numb);
+console.log("Q19 - Division:", numa / numb);
 
 // Q20. Find the remainder of two numbers.
-console.log(numa%numb);
+console.log("Q20 - Remainder:", numa % numb);
 
 // Q21. Find the square of a number.
-let numc =5;
-console.log(numc*numc);
+let numc = 5;
+console.log("Q21 - Square:", numc * numc);
+
 // Q22. Find the cube of a number.
-numd=3;
-console.log(numd*numd*numd);
+let numd = 3;
+console.log("Q22 - Cube:", numd * numd * numd);
 
 // Q23. Calculate the area of a rectangle.
-let length= 10;
-let width=30;
-let area = (length * width);
-console.log(area);
+let length = 10;
+let width = 30;
+let area = length * width;
+console.log("Q23 - Rectangle area:", area);
 
 // Q24. Calculate the perimeter of a rectangle.
-length=20;
-width=40;
-console.log(2*(length+width));
+length = 20;
+width = 40;
+console.log("Q24 - Rectangle perimeter:", 2 * (length + width));
 
 // Q25. Calculate the area of a circle.
-let radius=4;
-area = (3.14 *(  radius * radius));
-console.log("Area of circle having radius  is "+area);
-// Q26. Calculate the perimeter of a square.
+let radius = 4;
+area = 3.14 * radius * radius;
+console.log("Q25 - Circle area:", area);
 
-area =(("perimeter of circle ")+ (2*(3.14)* radius));
-console.log(area);
+// Q26. Calculate the perimeter of a square.
+let side26 = 5;
+let perimeter26 = 4 * side26;
+console.log("Q26 - Square perimeter:", perimeter26);
+
 // Q27. Calculate the average of three numbers.
-a=20;
-b=40;
-c=45;
-let avg =((a+b+c)/3);
-console.log(avg);
+a = 20;
+b = 40;
+let c = 45;
+let avg = (a + b + c) / 3;
+console.log("Q27 - Average of three:", avg);
 
 // Q28. Calculate the average of five numbers.
-a=55;
-b=66;
-c=56;
-let d=53;
-let e=900;
-avg=((a+b+c+d+e)/5);
-console.log(avg);
+a = 55;
+b = 66;
+c = 56;
+let d = 53;
+let e = 90;
+avg = (a + b + c + d + e) / 5;
+console.log("Q28 - Average of five:", avg);
 
-// Q29. Calculate Simple Interest.
-
-let principal=20000;
+// Q29. Calculate simple interest.
+let principal = 20000;
 let rate = 5;
-let time =3;
+let time = 3;
+let simpleInterest = (principal * rate * time) / 100;
+console.log("Q29 - Simple interest:", simpleInterest);
 
-let si = ((principal*rate*time)/100);
-console.log(si);
 // Q30. Calculate the total price of three products.
+let productOne = 1000;
+let productTwo = 3000;
+let productThree = 1000;
+console.log("Q30 - Total product price:",
+    productOne + productTwo + productThree);
 
-let productone =1000;
-let producttwo =3000;
-let productthree=1000;
 
-console.log( productone+producttwo+productthree);
-
-// =====================
+// ==========================================
 // 4. ASSIGNMENT OPERATORS
-// =====================
+// ==========================================
 
 // Q31. Use += to increase a variable by 10.
-
-a=100;
-console.log(a);
-a+=10;
-console.log(a);
-
+a = 100;
+a += 10;
+console.log("Q31 - After += 10:", a);
 
 // Q32. Use -= to decrease a variable by 5.
-b=60;
-console.log(b);
-b-=5;
-console.log(b);
+b = 60;
+b -= 5;
+console.log("Q32 - After -= 5:", b);
 
 // Q33. Use *= to multiply a variable by 2.
-b=4;
-console.log(b);
-b*=2;
-console.log(b);
+b = 4;
+b *= 2;
+console.log("Q33 - After *= 2:", b);
+
 // Q34. Use /= to divide a variable by 5.
-a=10;
-console.log(a);
-a/=5;
-console.log(a);
+a = 10;
+a /= 5;
+console.log("Q34 - After /= 5:", a);
 
 // Q35. Use %= to find the remainder.
-a=10;
-console.log(a);
-a%=5;
-console.log(a);
+a = 10;
+a %= 5;
+console.log("Q35 - After %= 5:", a);
 
-// Q36. Start with x = 100 and perform:
-let x=100;
-//      += 20
-x+=20;
-//      -= 10
-x-=10;
-//      *= 2
-x*=2;
-//      /= 5
-x/=5;
-console.log(x);
-//      Print the final value.
+// Q36. Apply multiple assignment operators.
+let x = 100;
+x += 20;
+x -= 10;
+x *= 2;
+x /= 5;
+console.log("Q36 - Final value:", x);
 
 
-// =====================
+// ==========================================
 // 5. COMPARISON OPERATORS
-// =====================
+// ==========================================
 
 // Q37. Check whether one number is greater than another.
-
-let num1 =55;
-let num2 =66;
-
-
+let num1 = 55;
+let num2 = 66;
+console.log("Q37 - First greater than second:", num1 > num2);
 
 // Q38. Check whether one number is smaller than another.
-console.log(num1 < num2);
-// Q39. Check whether two numbers are equal using ==.
-console.log(num1 == num2);
-// Q40. Check whether two numbers are equal using ===.
-console.log(num1 === num2);
+console.log("Q38 - First smaller than second:", num1 < num2);
+
+// Q39. Check equality using ==.
+console.log("Q39 - Equal using ==:", num1 == num2);
+
+// Q40. Check equality using ===.
+console.log("Q40 - Equal using ===:", num1 === num2);
+
 // Q41. Check whether two numbers are not equal.
-console.log(num1 !== num2);
-// Q42. Check whether a number is greater than or equal to 50.
-console.log(num1 >= 50);
-// Q43. Check whether a number is less than or equal to 100.
-console.log(num2 <= 100);
-// Q44. Compare:
-//      10 == "10"
-//      10 === "10"
+console.log("Q41 - Not equal:", num1 !== num2);
 
-console.log(10=="10");
-console.log(10==="10");
+// Q42. Check whether a number is >= 50.
+console.log("Q42 - Number >= 50:", num1 >= 50);
 
-// Q45. Check whether a student has passed.
-//      Passing marks = 40.
-let Student_mark =44;
-console.log( 40 <= Student_mark );
+// Q43. Check whether a number is <= 100.
+console.log("Q43 - Number <= 100:", num2 <= 100);
 
-// =====================
+// Q44. Compare 10 == "10" and 10 === "10".
+console.log("Q44 - Loose equality:", 10 == "10");
+console.log("Q44 - Strict equality:", 10 === "10");
+
+// Q45. Check whether a student passed (40 marks).
+let studentMark = 44;
+console.log("Q45 - Passed:", studentMark >= 40);
+
+
+// ==========================================
 // 6. LOGICAL OPERATORS
-// =====================
+// ==========================================
 
-// Q46. Check whether a person is between 18 and 60 years old.
-
-let person_age = 50;
-console.log( person_age <= 18 && person_age <= 60 )
-
+// Q46. Check whether age is between 18 and 60.
+let personAge = 50;
+console.log("Q46 - Age between 18 and 60:",
+    personAge >= 18 && personAge <= 60);
 
 // Q47. Check whether a student passed both subjects.
-
-// Marks in two subjects
 let subject1 = 65;
 let subject2 = 45;
-
-// Both subjects must have marks >= 35
 let passedBoth = subject1 >= 35 && subject2 >= 35;
-
-console.log("Q47 - Passed both subjects:", passedBoth);
-// Output: true
-
+console.log("Q47 - Passed both:", passedBoth);
 
 // Q48. Check whether a student passed at least one subject.
-
 let maths = 25;
 let science = 60;
-
-// At least one subject must have marks >= 35
 let passedOne = maths >= 35 || science >= 35;
-
-console.log("Q48 - Passed at least one subject:", passedOne);
-// Output: true
-
+console.log("Q48 - Passed at least one:", passedOne);
 
 // Q49. Check whether a user is logged in.
-
 let isLoggedIn = true;
-
-// Check whether the login status is true
-if (isLoggedIn === true) {
+if (isLoggedIn) {
     console.log("Q49 - User is logged in");
 } else {
     console.log("Q49 - User is not logged in");
 }
-// Output: User is logged in
-
 
 // Q50. Check whether a number is between 10 and 50.
-
 let number = 30;
+console.log("Q50 - Number between 10 and 50:",
+    number >= 10 && number <= 50);
 
-// Number must be >= 10 AND <= 50
-let isBetween = number >= 10 && number <= 50;
-
-console.log("Q50 - Number is between 10 and 50:", isBetween);
-// Output: true
-
-
-// Q51. Check whether a person is eligible for a job.
-// Age should be 18 or above AND qualification should be MCA.
-
- age = 23;
+// Q51. Check eligibility: age >= 18 and qualification is MCA.
+let jobAge = 23;
 let qualification = "MCA";
+console.log("Q51 - Eligible for job:",
+    jobAge >= 18 && qualification === "MCA");
 
-// Both conditions must be satisfied
-let isEligible = age >= 18 && qualification === "MCA";
-
-console.log("Q51 - Eligible for job:", isEligible);
-// Output: true
-
-
-// Q52. Check whether today is Saturday OR Sunday.
-
-// Change this value to test other days
+// Q52. Check whether today is Saturday or Sunday.
 let today = "Saturday";
-
-// The day must be Saturday OR Sunday
 let isWeekend = today === "Saturday" || today === "Sunday";
-
 console.log("Q52 - Is weekend:", isWeekend);
-// Output: true
 
-
-// Q53. Use ! to reverse a Boolean value.
-
+// Q53. Use ! to reverse a Boolean.
 let isRaining = true;
+console.log("Q53 - Is not raining:", !isRaining);
 
-// The ! operator reverses true to false
-let isNotRaining = !isRaining;
 
-console.log("Q53 - Is it not raining?", isNotRaining);
-// Output: false
+// ==========================================
+// 7. CONDITIONAL STATEMENTS
+// ==========================================
 
-// Q54. Check whether a number is positive or negative.
-
+// Q54. Check whether a number is positive, negative, or zero.
 let num54 = -10;
-
-if (num54 >= 0) {
-    console.log("Positive number");
+if (num54 > 0) {
+    console.log("Q54 - Positive number");
+} else if (num54 < 0) {
+    console.log("Q54 - Negative number");
 } else {
-    console.log("Negative number");
+    console.log("Q54 - Zero");
 }
-
 
 // Q55. Check whether a number is even or odd.
-
 let num55 = 7;
-
 if (num55 % 2 === 0) {
-    console.log("Even number");
+    console.log("Q55 - Even number");
 } else {
-    console.log("Odd number");
+    console.log("Q55 - Odd number");
 }
-
 
 // Q56. Find the largest of two numbers.
-
 let a56 = 20;
 let b56 = 15;
-
 if (a56 > b56) {
-    console.log(a56 + " is largest");
+    console.log("Q56 - Largest:", a56);
 } else if (b56 > a56) {
-    console.log(b56 + " is largest");
+    console.log("Q56 - Largest:", b56);
 } else {
-    console.log("Both numbers are equal");
+    console.log("Q56 - Both numbers are equal");
 }
-
 
 // Q57. Find the smallest of two numbers.
-
 let a57 = 10;
 let b57 = 25;
-
 if (a57 < b57) {
-    console.log(a57 + " is smallest");
+    console.log("Q57 - Smallest:", a57);
 } else if (b57 < a57) {
-    console.log(b57 + " is smallest");
+    console.log("Q57 - Smallest:", b57);
 } else {
-    console.log("Both numbers are equal");
+    console.log("Q57 - Both numbers are equal");
 }
 
-
 // Q58. Find the largest of three numbers.
-
 let a58 = 10;
 let b58 = 30;
 let c58 = 20;
-
 if (a58 >= b58 && a58 >= c58) {
-    console.log(a58 + " is largest");
+    console.log("Q58 - Largest:", a58);
 } else if (b58 >= a58 && b58 >= c58) {
-    console.log(b58 + " is largest");
+    console.log("Q58 - Largest:", b58);
 } else {
-    console.log(c58 + " is largest");
+    console.log("Q58 - Largest:", c58);
 }
 
-
 // Q59. Find the smallest of three numbers.
-
 let a59 = 10;
 let b59 = 30;
 let c59 = 5;
-
 if (a59 <= b59 && a59 <= c59) {
-    console.log(a59 + " is smallest");
+    console.log("Q59 - Smallest:", a59);
 } else if (b59 <= a59 && b59 <= c59) {
-    console.log(b59 + " is smallest");
+    console.log("Q59 - Smallest:", b59);
 } else {
-    console.log(c59 + " is smallest");
+    console.log("Q59 - Smallest:", c59);
 }
-
 
 // Q60. Check whether a person is eligible to vote.
-
 let age60 = 20;
-
 if (age60 >= 18) {
-    console.log("Eligible to vote");
+    console.log("Q60 - Eligible to vote");
 } else {
-    console.log("Not eligible to vote");
+    console.log("Q60 - Not eligible to vote");
 }
 
-
-// Q61. Check whether a student has passed or failed.
-// Assume 35 marks is the passing mark.
-
+// Q61. Check whether a student passed or failed (35 marks).
 let marks61 = 60;
-
 if (marks61 >= 35) {
-    console.log("Passed");
+    console.log("Q61 - Passed");
 } else {
-    console.log("Failed");
+    console.log("Q61 - Failed");
 }
-
 
 // Q62. Check whether a number is divisible by 5.
-
 let num62 = 25;
-
 if (num62 % 5 === 0) {
-    console.log("Divisible by 5");
+    console.log("Q62 - Divisible by 5");
 } else {
-    console.log("Not divisible by 5");
+    console.log("Q62 - Not divisible by 5");
 }
 
-
-// =====================
-// Q63. Divisible by both 3 and 5
-// =====================
-
+// Q63. Check divisibility by both 3 and 5.
 let num63 = 30;
-
 if (num63 % 3 === 0 && num63 % 5 === 0) {
-    console.log("Divisible by both 3 and 5");
+    console.log("Q63 - Divisible by both 3 and 5");
 } else {
-    console.log("Not divisible by both 3 and 5");
+    console.log("Q63 - Not divisible by both 3 and 5");
 }
 
-
-// =====================
-// Q64. Positive, Negative, or Zero
-// =====================
-
+// Q64. Check positive, negative, or zero.
 let num64 = 0;
-
 if (num64 > 0) {
-    console.log("Positive number");
+    console.log("Q64 - Positive number");
 } else if (num64 < 0) {
-    console.log("Negative number");
+    console.log("Q64 - Negative number");
 } else {
-    console.log("Number is zero");
+    console.log("Q64 - Zero");
 }
 
 
-// =====================
+// ==========================================
 // 8. REAL-WORLD PRACTICE
-// =====================
+// ==========================================
 
-// Q65. Calculate total shopping price
-
+// Q65. Calculate total shopping price.
 let item1 = 500;
 let item2 = 300;
 let item3 = 200;
-
 let totalShopping = item1 + item2 + item3;
+console.log("Q65 - Total shopping price:", totalShopping);
 
-console.log("Q65 Total Shopping Price:", totalShopping);
-
-
-// Q66. Calculate discount and final price
-
+// Q66. Calculate discount and final price.
 let originalPrice = 2000;
 let discountPercentage = 10;
-
-let discountAmount =
-    (originalPrice * discountPercentage) / 100;
-
+let discountAmount = originalPrice * discountPercentage / 100;
 let finalPrice = originalPrice - discountAmount;
+console.log("Q66 - Discount amount:", discountAmount);
+console.log("Q66 - Final price:", finalPrice);
 
-console.log("Q66 Discount Amount:", discountAmount);
-console.log("Q66 Final Price:", finalPrice);
-
-
-// Q67. Calculate salary after adding a bonus
-
+// Q67. Calculate salary after adding a bonus.
 let salary = 25000;
 let bonus = 5000;
-
 let totalSalary = salary + bonus;
+console.log("Q67 - Total salary:", totalSalary);
 
-console.log("Q67 Total Salary:", totalSalary);
-
-
-// Q68. Calculate profit or loss
-
+// Q68. Calculate profit or loss.
 let costPrice = 1000;
 let sellingPrice = 1200;
-
 if (sellingPrice > costPrice) {
-    let profit = sellingPrice - costPrice;
-    console.log("Q68 Profit:", profit);
+    console.log("Q68 - Profit:", sellingPrice - costPrice);
 } else if (sellingPrice < costPrice) {
-    let loss = costPrice - sellingPrice;
-    console.log("Q68 Loss:", loss);
+    console.log("Q68 - Loss:", costPrice - sellingPrice);
 } else {
-    console.log("Q68 No profit, no loss");
+    console.log("Q68 - No profit, no loss");
 }
 
-
-// Q69. Calculate total marks and percentage
-
+// Q69. Calculate total marks and percentage.
 subject1 = 80;
 subject2 = 75;
 let subject3 = 90;
 let subject4 = 85;
 let subject5 = 70;
-
-let totalMarks =
-    subject1 + subject2 + subject3 + subject4 + subject5;
-
+let totalMarks = subject1 + subject2 + subject3 + subject4 + subject5;
 let maximumMarks = 500;
+let percentage = totalMarks / maximumMarks * 100;
+console.log("Q69 - Total marks:", totalMarks);
+console.log("Q69 - Percentage:", percentage + "%");
 
-let percentage = (totalMarks / maximumMarks) * 100;
-
-console.log("Q69 Total Marks:", totalMarks);
-console.log("Q69 Percentage:", percentage + "%");
-
-
-// Q70. Calculate age from birth year
-
+// Q70. Calculate approximate age from birth year.
 let birthYear = 2003;
 let currentYear = new Date().getFullYear();
+let calculatedAge = currentYear - birthYear;
+console.log("Q70 - Approximate age:", calculatedAge);
 
- age = currentYear - birthYear;
-
-console.log("Q70 Approximate Age:", age);
-
-
-// Q71. Calculate electricity bill based on units
-// Example rates:
-// First 100 units: ₹2 per unit
-// Next 100 units: ₹3 per unit
-// Above 200 units: ₹5 per unit
-
+// Q71. Calculate electricity bill using example rates:
+// First 100 units: ₹2/unit; next 100: ₹3/unit; above 200: ₹5/unit.
 let units = 250;
-let bill;
-
+let bill = 0;
 if (units < 0) {
-    console.log("Q71 Invalid units");
+    console.log("Q71 - Invalid units");
 } else if (units <= 100) {
     bill = units * 2;
-    console.log("Q71 Electricity Bill:", bill);
+    console.log("Q71 - Electricity bill:", bill);
 } else if (units <= 200) {
-    bill = (100 * 2) + ((units - 100) * 3);
-    console.log("Q71 Electricity Bill:", bill);
+    bill = 100 * 2 + (units - 100) * 3;
+    console.log("Q71 - Electricity bill:", bill);
 } else {
-    bill = (100 * 2) + (100 * 3) + ((units - 200) * 5);
-    console.log("Q71 Electricity Bill:", bill);
+    bill = 100 * 2 + 100 * 3 + (units - 200) * 5;
+    console.log("Q71 - Electricity bill:", bill);
 }
 
-
-// Q72. Convert Celsius to Fahrenheit
-
+// Q72. Convert Celsius to Fahrenheit.
 let celsius = 30;
+let fahrenheit = celsius * 9 / 5 + 32;
+console.log("Q72 - Fahrenheit:", fahrenheit);
 
-let fahrenheit = (celsius * 9 / 5) + 32;
-
-console.log("Q72 Fahrenheit:", fahrenheit);
-
-
-// Q73. Convert Fahrenheit to Celsius
-
+// Q73. Convert Fahrenheit to Celsius.
 let fahrenheit2 = 86;
-
 let celsius2 = (fahrenheit2 - 32) * 5 / 9;
+console.log("Q73 - Celsius:", celsius2);
 
-console.log("Q73 Celsius:", celsius2);
-
-
-// Q74. Convert kilometers to meters
-
+// Q74. Convert kilometers to meters.
 let kilometers = 5;
-
 let meters = kilometers * 1000;
+console.log("Q74 - Meters:", meters);
 
-console.log("Q74 Meters:", meters);
-
-
-// Q75. Convert meters to kilometers
-
+// Q75. Convert meters to kilometers.
 let meters2 = 2500;
-
 let kilometers2 = meters2 / 1000;
+console.log("Q75 - Kilometers:", kilometers2);
 
-console.log("Q75 Kilometers:", kilometers2);
-
-
-// Q76. Convert minutes into hours and minutes
-
+// Q76. Convert minutes into hours and minutes.
 let totalMinutes = 135;
-
 let hours = Math.floor(totalMinutes / 60);
 let remainingMinutes = totalMinutes % 60;
+console.log("Q76 - Hours:", hours);
+console.log("Q76 - Remaining minutes:", remainingMinutes);
 
-console.log("Q76 Hours:", hours);
-console.log("Q76 Remaining Minutes:", remainingMinutes);
-
-
-// Q77. Convert hours into minutes
-
+// Q77. Convert hours into minutes.
 let hours2 = 3;
-
 let minutes = hours2 * 60;
+console.log("Q77 - Minutes:", minutes);
 
-console.log("Q77 Minutes:", minutes);
-
-
-// Q78. Calculate BMI
-// Weight is in kilograms.
-// Height is in meters.
-
+// Q78. Calculate BMI (weight in kg, height in metres).
 let weight = 70;
 let height = 1.75;
-
 let bmi = weight / (height * height);
+console.log("Q78 - BMI:", bmi.toFixed(2));
 
-console.log("Q78 BMI:", bmi.toFixed(2));
-
-
-// Q79. Area and perimeter of a square
-
+// Q79. Calculate area and perimeter of a square.
 let side = 5;
-
 let squareArea = side * side;
 let squarePerimeter = 4 * side;
+console.log("Q79 - Square area:", squareArea);
+console.log("Q79 - Square perimeter:", squarePerimeter);
 
-console.log("Q79 Square Area:", squareArea);
-console.log("Q79 Square Perimeter:", squarePerimeter);
-
-
-// Q80. Area and perimeter of a rectangle
-
+// Q80. Calculate area and perimeter of a rectangle.
 length = 10;
 width = 5;
-
 let rectangleArea = length * width;
 let rectanglePerimeter = 2 * (length + width);
-
-console.log("Q80 Rectangle Area:", rectangleArea);
-console.log("Q80 Rectangle Perimeter:", rectanglePerimeter);
-
+console.log("Q80 - Rectangle area:", rectangleArea);
+console.log("Q80 - Rectangle perimeter:", rectanglePerimeter);
 
 // =====================
 // 9. MINI CHALLENGES
