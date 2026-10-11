@@ -1,0 +1,921 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Expense Tracker</title>
+   
+    
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #172033;
+}
+
+header {
+    background: #1d3557;
+    color: white;
+    padding: 28px 16px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 8px;
+}
+
+header p {
+    margin: 0;
+    color: #dbeafe;
+}
+
+main {
+    width: min(1000px, 94%);
+    margin: 24px auto;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #1720330d;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.summary .card {
+    background: #e8efff;
+}
+
+.summary h2 {
+    margin-bottom: 0;
+    color: #2349b8;
+}
+
+label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input,
+select {
+    display: block;
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: white;
+    font: inherit;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #93b4ff;
+    border-color: #315efb;
+}
+
+button {
+    padding: 10px 14px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 7px;
+    background: #315efb;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+button.secondary {
+    background: #e8efff;
+    color: #2349b8;
+}
+
+button.danger {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.actions button {
+    margin-top: 10px;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.message {
+    min-height: 20px;
+    overflow-wrap: anywhere;
+}
+
+.success {
+    color: #15803d;
+}
+
+.error {
+    color: #b91c1c;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+
+th,
+td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background: #f8fafc;
+}
+
+td button {
+    margin: 2px;
+    padding: 7px 9px;
+    font-size: 13px;
+}
+
+pre {
+    padding: 14px;
+    background: #111827;
+    color: #e5edff;
+    border-radius: 8px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+footer {
+    padding: 15px;
+    text-align: center;
+    color: #64748b;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .summary,
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Expense Tracker</h1>
+        <p>Practice ES6+, Local Storage, Promises & Async/Await</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>User Details</h2>
+            <input id="username" placeholder="Enter your username">
+            <button id="saveUser">Save Username</button>
+            <p id="userMessage" class="message"></p>
+        </section>
+
+        <section class="summary">
+            <div class="card">
+                <span>Total Expenses</span>
+                <h2 id="totalAmount">₹0.00</h2>
+            </div>
+            <div class="card">
+                <span>Number of Expenses</span>
+                <h2 id="expenseCount">0</h2>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 id="formHeading">Add Expense</h2>
+
+            <form id="expenseForm">
+                <input type="hidden" id="expenseId">
+
+                <label for="title">Expense Title</label>
+                <input id="title" required placeholder="e.g. Lunch">
+
+                <label for="amount">Amount (₹)</label>
+                <input id="amount" type="number" min="0.01"
+                       step="0.01" required placeholder="Enter amount">
+
+                <label for="category">Category</label>
+                <select id="category">
+                    <option>Food</option>
+                    <option>Transport</option>
+                    <option>Shopping</option>
+                    <option>Bills</option>
+                    <option>Education</option>
+                    <option>Health</option>
+                    <option>Other</option>
+                </select>
+
+                <label for="date">Date</label>
+                <input id="date" type="date" required>
+
+                <div class="actions">
+                    <button type="submit" id="submitButton">Add Expense</button>
+                    <button type="button" id="cancelEdit" class="secondary"
+                            hidden>Cancel Edit</button>
+                </div>
+            </form>
+
+            <p id="expenseMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <section class="card">
+            <h2>Filter Expenses</h2>
+
+            <div class="filters">
+                <div>
+                    <label for="filterCategory">Category</label>
+                    <select id="filterCategory">
+                        <option value="">All Categories</option>
+                        <option>Food</option>
+                        <option>Transport</option>
+                        <option>Shopping</option>
+                        <option>Bills</option>
+                        <option>Education</option>
+                        <option>Health</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="filterDate">Date</label>
+                    <input type="date" id="filterDate">
+                </div>
+            </div>
+
+            <button type="button" id="clearFilters" class="secondary">
+                Clear Filters
+            </button>
+        </section>
+
+        <section class="card">
+            <h2>All Expenses</h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expenseList"></tbody>
+                </table>
+            </div>
+
+            <button id="deleteAll" class="danger" type="button">
+                Delete All Expenses
+            </button>
+        </section>
+
+        <section class="card">
+            <h2>Async JavaScript Practice</h2>
+            <p>Practise Promises, async/await, Promise.all(), and error handling.</p>
+
+            <div class="actions">
+                <button id="promiseButton">Save with Promise</button>
+                <button id="asyncButton">Load with Async/Await</button>
+                <button id="allButton">Promise.all()</button>
+                <button id="loadingButton" class="secondary">
+                    Simulate Loading
+                </button>
+            </div>
+
+            <p id="asyncMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <section class="card">
+            <h2>ES6+ Demonstration</h2>
+            <button id="es6Button" type="button">Run ES6+ Examples</button>
+            <pre id="es6Output">Click the button to see the results.</pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>Practice project — data is saved in your browser.</p>
+    </footer>
+</body>
+<script >  
+
+"use strict";
+
+// ====================================
+// SELECT HTML ELEMENTS
+// ====================================
+
+const $ = selector => document.querySelector(selector);
+
+const STORAGE_KEY = "practiceExpenses";
+const USER_KEY = "practiceUsername";
+
+const form = $("#expenseForm");
+const expenseList = $("#expenseList");
+
+// ====================================
+// ES6+ HELPERS
+// ====================================
+
+const formatMoney = amount =>
+    new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR"
+    }).format(amount);
+
+const today = () => {
+    const date = new Date();
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    return date.toISOString().slice(0, 10);
+};
+
+$("#date").value = today();
+
+// Show success/error messages safely.
+function showMessage(selector, message, type = "") {
+    const element = $(selector);
+    element.textContent = message;
+    element.className = "message " + type;
+}
+
+// ====================================
+// LOCAL STORAGE FUNCTIONS
+// ====================================
+
+// Local Storage is synchronous.
+// JSON lets us save arrays and objects as strings.
+
+function getExpenses() {
+    const data = localStorage.getItem(STORAGE_KEY);
+
+    if (!data) {
+        return [];
+    }
+
+    const parsed = JSON.parse(data);
+
+    if (!Array.isArray(parsed)) {
+        throw new Error("Expense data must be an array.");
+    }
+
+    return parsed;
+}
+
+function saveExpenses(expenses) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+}
+
+// ====================================
+// DISPLAY EXPENSES
+// ====================================
+
+function renderExpenses() {
+    try {
+        const expenses = getExpenses();
+
+        const selectedCategory = $("#filterCategory").value;
+        const selectedDate = $("#filterDate").value;
+
+        // filter() creates the visible list.
+        const filtered = expenses.filter(expense => {
+            const matchesCategory =
+                !selectedCategory ||
+                expense.category === selectedCategory;
+
+            const matchesDate =
+                !selectedDate ||
+                expense.date === selectedDate;
+
+            return matchesCategory && matchesDate;
+        });
+
+        expenseList.replaceChildren();
+
+        if (filtered.length === 0) {
+            const row = document.createElement("tr");
+            const cell = document.createElement("td");
+
+            cell.colSpan = 5;
+            cell.textContent = "No expenses found.";
+
+            row.append(cell);
+            expenseList.append(row);
+        }
+
+        filtered.forEach(expense => {
+            const row = document.createElement("tr");
+
+            const values = [
+                expense.title,
+                formatMoney(Number(expense.amount)),
+                expense.category,
+                expense.date
+            ];
+
+            values.forEach(value => {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.append(cell);
+            });
+
+            const actionCell = document.createElement("td");
+
+            const editButton = document.createElement("button");
+            editButton.textContent = "Edit";
+            editButton.className = "secondary";
+
+            editButton.addEventListener("click", () => {
+                startEditing(expense.id);
+            });
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.className = "danger";
+
+            deleteButton.addEventListener("click", () => {
+                deleteExpense(expense.id);
+            });
+
+            actionCell.append(editButton, deleteButton);
+            row.append(actionCell);
+            expenseList.append(row);
+        });
+
+        // reduce() calculates the total.
+        const total = expenses.reduce(
+            (sum, expense) => sum + Number(expense.amount),
+            0
+        );
+
+        $("#totalAmount").textContent = formatMoney(total);
+        $("#expenseCount").textContent = expenses.length;
+
+    } catch (error) {
+        showMessage(
+            "#expenseMessage",
+            "Could not display expenses: " + error.message,
+            "error"
+        );
+    }
+}
+
+// ====================================
+// ADD AND UPDATE EXPENSES
+// ====================================
+
+form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const id = $("#expenseId").value;
+    const title = $("#title").value.trim();
+    const amount = Number($("#amount").value);
+    const category = $("#category").value;
+    const date = $("#date").value;
+
+    if (!title || !Number.isFinite(amount) || amount <= 0 || !date) {
+        showMessage(
+            "#expenseMessage",
+            "Enter a title, valid positive amount, and date.",
+            "error"
+        );
+        return;
+    }
+
+    try {
+        const expenses = getExpenses();
+
+        const expense = {
+            id: id || String(Date.now()),
+            title,
+            amount,
+            category,
+            date
+        };
+
+        let updatedExpenses;
+
+        if (id) {
+            // map() replaces only the matching expense.
+            updatedExpenses = expenses.map(item =>
+                String(item.id) === id
+                    ? { ...item, ...expense }
+                    : item
+            );
+        } else {
+            // Spread syntax creates a new array.
+            updatedExpenses = [...expenses, expense];
+        }
+
+        saveExpenses(updatedExpenses);
+
+        resetForm();
+        renderExpenses();
+
+        showMessage(
+            "#expenseMessage",
+            id ? "Expense updated successfully!" :
+                 "Expense added successfully!",
+            "success"
+        );
+
+    } catch (error) {
+        showMessage(
+            "#expenseMessage",
+            "Could not save: " + error.message,
+            "error"
+        );
+    }
+});
+
+// ====================================
+// EDIT EXPENSE
+// ====================================
+
+function startEditing(id) {
+    try {
+        const expense = getExpenses().find(
+            item => String(item.id) === String(id)
+        );
+
+        if (!expense) {
+            throw new Error("Expense not found.");
+        }
+
+        $("#expenseId").value = expense.id;
+        $("#title").value = expense.title;
+        $("#amount").value = expense.amount;
+        $("#category").value = expense.category;
+        $("#date").value = expense.date;
+
+        $("#formHeading").textContent = "Edit Expense";
+        $("#submitButton").textContent = "Update Expense";
+        $("#cancelEdit").hidden = false;
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+    } catch (error) {
+        showMessage("#expenseMessage", error.message, "error");
+    }
+}
+
+// ====================================
+// DELETE EXPENSE
+// ====================================
+
+function deleteExpense(id) {
+    if (!confirm("Do you want to delete this expense?")) {
+        return;
+    }
+
+    try {
+        const expenses = getExpenses();
+
+        // filter() removes the selected expense.
+        const updated = expenses.filter(
+            item => String(item.id) !== String(id)
+        );
+
+        saveExpenses(updated);
+        renderExpenses();
+
+        showMessage(
+            "#expenseMessage",
+            "Expense deleted successfully!",
+            "success"
+        );
+
+    } catch (error) {
+        showMessage("#expenseMessage", error.message, "error");
+    }
+}
+
+// ====================================
+// RESET FORM
+// ====================================
+
+function resetForm() {
+    form.reset();
+
+    $("#expenseId").value = "";
+    $("#date").value = today();
+    $("#formHeading").textContent = "Add Expense";
+    $("#submitButton").textContent = "Add Expense";
+    $("#cancelEdit").hidden = true;
+}
+
+$("#cancelEdit").addEventListener("click", resetForm);
+
+// ====================================
+// FILTERS
+// ====================================
+
+$("#filterCategory").addEventListener("change", renderExpenses);
+$("#filterDate").addEventListener("change", renderExpenses);
+
+$("#clearFilters").addEventListener("click", () => {
+    $("#filterCategory").value = "";
+    $("#filterDate").value = "";
+
+    renderExpenses();
+});
+
+// ====================================
+// DELETE ALL EXPENSES
+// ====================================
+
+$("#deleteAll").addEventListener("click", () => {
+    if (!confirm("Delete all expenses?")) {
+        return;
+    }
+
+    try {
+        saveExpenses([]);
+        resetForm();
+        renderExpenses();
+
+        showMessage(
+            "#expenseMessage",
+            "All expenses deleted.",
+            "success"
+        );
+
+    } catch (error) {
+        showMessage("#expenseMessage", error.message, "error");
+    }
+});
+
+// ====================================
+// SAVE AND READ USERNAME
+// ====================================
+
+$("#saveUser").addEventListener("click", () => {
+    const username = $("#username").value.trim();
+
+    if (!username) {
+        showMessage("#userMessage", "Enter a username.", "error");
+        return;
+    }
+
+    try {
+        localStorage.setItem(USER_KEY, username);
+
+        showMessage(
+            "#userMessage",
+            `Welcome, ${username}! Username saved.`,
+            "success"
+        );
+
+    } catch (error) {
+        showMessage("#userMessage", error.message, "error");
+    }
+});
+
+// Restore saved username on page load.
+try {
+    $("#username").value = localStorage.getItem(USER_KEY) || "";
+} catch (error) {
+    showMessage("#userMessage", error.message, "error");
+}
+
+// ====================================
+// PROMISES
+// ====================================
+
+// Promise wrapper for saving data.
+// Local Storage itself is synchronous.
+
+function saveWithPromise(key, value) {
+    return new Promise((resolve, reject) => {
+        try {
+            localStorage.setItem(key, JSON.stringify(value));
+            resolve("Data saved successfully!");
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+function loadWithPromise(key) {
+    return new Promise((resolve, reject) => {
+        try {
+            const data = localStorage.getItem(key);
+
+            resolve(data === null ? null : JSON.parse(data));
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+// Q11: Save using Promise and then().
+$("#promiseButton").addEventListener("click", () => {
+    try {
+        const expenses = getExpenses();
+
+        saveWithPromise(STORAGE_KEY, expenses)
+            .then(message => {
+                showMessage("#asyncMessage", message, "success");
+            })
+            .catch(error => {
+                showMessage("#asyncMessage", error.message, "error");
+            });
+
+    } catch (error) {
+        showMessage("#asyncMessage", error.message, "error");
+    }
+});
+
+// Q12: Load using async/await.
+$("#asyncButton").addEventListener("click", async () => {
+    try {
+        showMessage("#asyncMessage", "Loading expenses...");
+
+        const expenses = await loadWithPromise(STORAGE_KEY);
+
+        showMessage(
+            "#asyncMessage",
+            `Loaded ${expenses?.length || 0} expenses successfully.`,
+            "success"
+        );
+
+    } catch (error) {
+        showMessage("#asyncMessage", error.message, "error");
+    }
+});
+
+// Q13: Error handling demonstration.
+async function testErrorHandling() {
+    try {
+        // Invalid JSON deliberately triggers an error.
+        JSON.parse("{invalid json}");
+    } catch (error) {
+        showMessage(
+            "#asyncMessage",
+            "Error handled safely: " + error.message,
+            "error"
+        );
+    }
+}
+
+// ====================================
+// PROMISE.ALL()
+// ====================================
+
+$("#allButton").addEventListener("click", async () => {
+    try {
+        const expenses = getExpenses();
+
+        const results = await Promise.all([
+            saveWithPromise(STORAGE_KEY, expenses),
+            saveWithPromise("practiceCurrency", "INR"),
+            saveWithPromise(
+                "practiceProfile",
+                { username: $("#username").value || "Guest" }
+            )
+        ]);
+
+        showMessage(
+            "#asyncMessage",
+            results.join("\n"),
+            "success"
+        );
+
+    } catch (error) {
+        showMessage("#asyncMessage", error.message, "error");
+    }
+});
+
+// ====================================
+// SIMULATED ASYNC LOADING
+// ====================================
+
+const delay = milliseconds =>
+    new Promise(resolve => setTimeout(resolve, milliseconds));
+
+$("#loadingButton").addEventListener("click", async event => {
+    const button = event.currentTarget;
+    button.disabled = true;
+
+    try {
+        showMessage("#asyncMessage", "Loading expenses...");
+
+        await delay(1000);
+
+        const expenses = await loadWithPromise(STORAGE_KEY);
+
+        showMessage(
+            "#asyncMessage",
+            `Finished loading ${expenses?.length || 0} expenses.`,
+            "success"
+        );
+
+    } catch (error) {
+        showMessage("#asyncMessage", error.message, "error");
+    } finally {
+        button.disabled = false;
+    }
+});
+
+// ====================================
+// ES6+ DEMONSTRATION
+// ====================================
+
+$("#es6Button").addEventListener("click", () => {
+    const numbers = [10, 20, 30];
+
+    // Arrow function
+    const double = number => number * 2;
+
+    // map()
+    const doubled = numbers.map(double);
+
+    // filter()
+    const filtered = numbers.filter(number => number > 15);
+
+    // reduce()
+    const sum = numbers.reduce((total, number) => total + number, 0);
+
+    // Spread operator
+    const copied = [...numbers, 40];
+
+    // Destructuring
+    const [first, second] = numbers;
+
+    // Template literal
+    const output = `
+Original array: ${JSON.stringify(numbers)}
+Doubled with map(): ${JSON.stringify(doubled)}
+Above 15 with filter(): ${JSON.stringify(filtered)}
+Total with reduce(): ${sum}
+Spread copy: ${JSON.stringify(copied)}
+Destructuring: first = ${first}, second = ${second}
+Arrow function: double(5) = ${double(5)}
+`;
+
+    $("#es6Output").textContent = output;
+});
+
+// ====================================
+// INITIAL PAGE LOAD
+// ====================================
+
+renderExpenses();
+
+</script>
+</html>
