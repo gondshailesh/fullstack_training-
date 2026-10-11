@@ -495,7 +495,9 @@ if (num62 % 5 === 0) {
 }
 
 
-// Q63. Check whether a number is divisible by both 3 and 5.
+// =====================
+// Q63. Divisible by both 3 and 5
+// =====================
 
 let num63 = 30;
 
@@ -506,7 +508,9 @@ if (num63 % 3 === 0 && num63 % 5 === 0) {
 }
 
 
-// Q64. Check whether a number is zero, positive, or negative.
+// =====================
+// Q64. Positive, Negative, or Zero
+// =====================
 
 let num64 = 0;
 
@@ -523,37 +527,198 @@ if (num64 > 0) {
 // 8. REAL-WORLD PRACTICE
 // =====================
 
-// Q65. Calculate total shopping price.
+// Q65. Calculate total shopping price
 
-// Q66. Calculate discount amount and final price.
+let item1 = 500;
+let item2 = 300;
+let item3 = 200;
 
-// Q67. Calculate salary after adding a bonus.
+let totalShopping = item1 + item2 + item3;
 
-// Q68. Calculate profit or loss.
+console.log("Q65 Total Shopping Price:", totalShopping);
 
-// Q69. Calculate a student's total marks and percentage.
 
-// Q70. Calculate age from birth year.
+// Q66. Calculate discount and final price
 
-// Q71. Calculate electricity bill based on units.
+let originalPrice = 2000;
+let discountPercentage = 10;
 
-// Q72. Convert Celsius to Fahrenheit.
+let discountAmount =
+    (originalPrice * discountPercentage) / 100;
 
-// Q73. Convert Fahrenheit to Celsius.
+let finalPrice = originalPrice - discountAmount;
 
-// Q74. Convert kilometers to meters.
+console.log("Q66 Discount Amount:", discountAmount);
+console.log("Q66 Final Price:", finalPrice);
 
-// Q75. Convert meters to kilometers.
 
-// Q76. Convert minutes into hours and minutes.
+// Q67. Calculate salary after adding a bonus
 
-// Q77. Convert hours into minutes.
+let salary = 25000;
+let bonus = 5000;
 
-// Q78. Calculate BMI using height and weight.
+let totalSalary = salary + bonus;
 
-// Q79. Calculate the area and perimeter of a square.
+console.log("Q67 Total Salary:", totalSalary);
 
-// Q80. Calculate the area and perimeter of a rectangle.
+
+// Q68. Calculate profit or loss
+
+let costPrice = 1000;
+let sellingPrice = 1200;
+
+if (sellingPrice > costPrice) {
+    let profit = sellingPrice - costPrice;
+    console.log("Q68 Profit:", profit);
+} else if (sellingPrice < costPrice) {
+    let loss = costPrice - sellingPrice;
+    console.log("Q68 Loss:", loss);
+} else {
+    console.log("Q68 No profit, no loss");
+}
+
+
+// Q69. Calculate total marks and percentage
+
+subject1 = 80;
+subject2 = 75;
+let subject3 = 90;
+let subject4 = 85;
+let subject5 = 70;
+
+let totalMarks =
+    subject1 + subject2 + subject3 + subject4 + subject5;
+
+let maximumMarks = 500;
+
+let percentage = (totalMarks / maximumMarks) * 100;
+
+console.log("Q69 Total Marks:", totalMarks);
+console.log("Q69 Percentage:", percentage + "%");
+
+
+// Q70. Calculate age from birth year
+
+let birthYear = 2003;
+let currentYear = new Date().getFullYear();
+
+ age = currentYear - birthYear;
+
+console.log("Q70 Approximate Age:", age);
+
+
+// Q71. Calculate electricity bill based on units
+// Example rates:
+// First 100 units: ₹2 per unit
+// Next 100 units: ₹3 per unit
+// Above 200 units: ₹5 per unit
+
+let units = 250;
+let bill;
+
+if (units < 0) {
+    console.log("Q71 Invalid units");
+} else if (units <= 100) {
+    bill = units * 2;
+    console.log("Q71 Electricity Bill:", bill);
+} else if (units <= 200) {
+    bill = (100 * 2) + ((units - 100) * 3);
+    console.log("Q71 Electricity Bill:", bill);
+} else {
+    bill = (100 * 2) + (100 * 3) + ((units - 200) * 5);
+    console.log("Q71 Electricity Bill:", bill);
+}
+
+
+// Q72. Convert Celsius to Fahrenheit
+
+let celsius = 30;
+
+let fahrenheit = (celsius * 9 / 5) + 32;
+
+console.log("Q72 Fahrenheit:", fahrenheit);
+
+
+// Q73. Convert Fahrenheit to Celsius
+
+let fahrenheit2 = 86;
+
+let celsius2 = (fahrenheit2 - 32) * 5 / 9;
+
+console.log("Q73 Celsius:", celsius2);
+
+
+// Q74. Convert kilometers to meters
+
+let kilometers = 5;
+
+let meters = kilometers * 1000;
+
+console.log("Q74 Meters:", meters);
+
+
+// Q75. Convert meters to kilometers
+
+let meters2 = 2500;
+
+let kilometers2 = meters2 / 1000;
+
+console.log("Q75 Kilometers:", kilometers2);
+
+
+// Q76. Convert minutes into hours and minutes
+
+let totalMinutes = 135;
+
+let hours = Math.floor(totalMinutes / 60);
+let remainingMinutes = totalMinutes % 60;
+
+console.log("Q76 Hours:", hours);
+console.log("Q76 Remaining Minutes:", remainingMinutes);
+
+
+// Q77. Convert hours into minutes
+
+let hours2 = 3;
+
+let minutes = hours2 * 60;
+
+console.log("Q77 Minutes:", minutes);
+
+
+// Q78. Calculate BMI
+// Weight is in kilograms.
+// Height is in meters.
+
+let weight = 70;
+let height = 1.75;
+
+let bmi = weight / (height * height);
+
+console.log("Q78 BMI:", bmi.toFixed(2));
+
+
+// Q79. Area and perimeter of a square
+
+let side = 5;
+
+let squareArea = side * side;
+let squarePerimeter = 4 * side;
+
+console.log("Q79 Square Area:", squareArea);
+console.log("Q79 Square Perimeter:", squarePerimeter);
+
+
+// Q80. Area and perimeter of a rectangle
+
+length = 10;
+width = 5;
+
+let rectangleArea = length * width;
+let rectanglePerimeter = 2 * (length + width);
+
+console.log("Q80 Rectangle Area:", rectangleArea);
+console.log("Q80 Rectangle Perimeter:", rectanglePerimeter);
 
 
 // =====================
