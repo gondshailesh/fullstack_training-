@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f1f5f9;
+        color: #1e293b;
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #1d4ed8;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        margin: 18px 0;
+        border-radius: 10px;
+        border: 1px solid #dbeafe;
+    }
+
+    input, select, button {
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 6px 4px 6px 0;
+        border-radius: 5px;
+        border: 1px solid #cbd5e1;
+        font-size: 15px;
+    }
+
+    input {
+        max-width: 100%;
+    }
+
+    button {
+        background: #1d4ed8;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #1e40af;
+    }
+
+    .card p:not(.hint) {
+        font-weight: bold;
+        color: #047857;
+    }
+
+    .hint {
+        color: #64748b;
+        font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            margin: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            margin: 6px 0;
+        }
+    }
+</style>
+
+</head>
+<body>
+    
+<h1>JavaScript Mini Challenges (Q81–Q90)</h1>
+<p>Enter values and click Calculate to see the result.</p>
+
+<section class="card">
+    <h2>Q81 & Q90. Calculator</h2>
+    <input id="n1" type="number" placeholder="First number">
+    <input id="n2" type="number" placeholder="Second number">
+    <select id="operation">
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraction (-)</option>
+        <option value="*">Multiplication (*)</option>
+        <option value="/">Division (/)</option>
+        <option value="%">Remainder (%)</option>
+    </select>
+    <button onclick="calculate()">Calculate</button>
+    <p id="r81"></p>
+</section>
+
+<section class="card">
+    <h2>Q82. Student Result</h2>
+    <input id="m1" type="number" placeholder="Subject 1 marks (out of 100)">
+    <input id="m2" type="number" placeholder="Subject 2 marks">
+    <input id="m3" type="number" placeholder="Subject 3 marks">
+    <input id="m4" type="number" placeholder="Subject 4 marks">
+    <input id="m5" type="number" placeholder="Subject 5 marks">
+    <button onclick="studentResult()">Calculate Result</button>
+    <p id="r82"></p>
+</section>
+
+<section class="card">
+    <h2>Q83. Shopping Bill</h2>
+    <input id="price" type="number" placeholder="Price per item">
+    <input id="quantity" type="number" placeholder="Quantity">
+    <input id="discount" type="number" placeholder="Discount percentage">
+    <button onclick="shoppingBill()">Calculate Bill</button>
+    <p id="r83"></p>
+</section>
+
+<section class="card">
+    <h2>Q84. Salary Calculator</h2>
+    <input id="salary" type="number" placeholder="Basic salary">
+    <input id="bonus" type="number" placeholder="Bonus">
+    <input id="deduction" type="number" placeholder="Deductions">
+    <button onclick="salaryCalculator()">Calculate Salary</button>
+    <p id="r84"></p>
+</section>
+
+<section class="card">
+    <h2>Q85. Temperature Converter</h2>
+    <input id="temperature" type="number" placeholder="Temperature">
+    <select id="tempType">
+        <option value="C">Celsius to Fahrenheit</option>
+        <option value="F">Fahrenheit to Celsius</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <p id="r85"></p>
+</section>
+
+<section class="card">
+    <h2>Q86. Age Calculator</h2>
+    <label for="birthDate">Select your date of birth:</label>
+    <input id="birthDate" type="date">
+    <button onclick="ageCalculator()">Calculate Age</button>
+    <p id="r86"></p>
+</section>
+
+<section class="card">
+    <h2>Q87. Profit or Loss</h2>
+    <input id="costPrice" type="number" placeholder="Cost price">
+    <input id="sellingPrice" type="number" placeholder="Selling price">
+    <button onclick="profitLoss()">Calculate</button>
+    <p id="r87"></p>
+</section>
+
+<section class="card">
+    <h2>Q88. Electricity Bill</h2>
+    <input id="units" type="number" placeholder="Units consumed">
+    <p class="hint">Example rates: first 100 units ₹2/unit, next 100 ₹3/unit, remaining ₹5/unit.</p>
+    <button onclick="electricityBill()">Calculate Bill</button>
+    <p id="r88"></p>
+</section>
+
+<section class="card">
+    <h2>Q89. Currency Converter</h2>
+    <input id="amount" type="number" placeholder="Amount in INR (₹)">
+    <label>Example exchange rate: ₹1 = $0.012</label>
+    <button onclick="currencyConverter()">Convert INR to USD</button>
+    <p id="r89"></p>
+</section>
+
+</body>
+<Script>
+    
+"use strict";
+
+// Q81 and Q90: Calculator
+function calculate() {
+    const a = Number(document.getElementById("n1").value);
+    const b = Number(document.getElementById("n2").value);
+    const op = document.getElementById("operation").value;
+    let result;
+
+    if (document.getElementById("n1").value === "" ||
+        document.getElementById("n2").value === "") {
+        result = "Please enter both numbers.";
+    } else if ((op === "/" || op === "%") && b === 0) {
+        result = "Cannot divide by zero.";
+    } else {
+        switch (op) {
+            case "+": result = a + b; break;
+            case "-": result = a - b; break;
+            case "*": result = a * b; break;
+            case "/": result = a / b; break;
+            case "%": result = a % b; break;
+        }
+    }
+
+    document.getElementById("r81").textContent = "Result: " + result;
+}
+
+
+// Q82: Total marks, percentage, and pass/fail
+function studentResult() {
+    const ids = ["m1", "m2", "m3", "m4", "m5"];
+    const fields = ids.map(id => document.getElementById(id).value);
+
+    if (fields.some(value => value === "")) {
+        document.getElementById("r82").textContent =
+            "Please enter all five subject marks.";
+        return;
+    }
+
+    const marks = fields.map(Number);
+
+    if (marks.some(mark => mark < 0 || mark > 100)) {
+        document.getElementById("r82").textContent =
+            "Each mark must be between 0 and 100.";
+        return;
+    }
+
+    const total = marks.reduce((sum, mark) => sum + mark, 0);
+    const percentage = total / 500 * 100;
+    const result = marks.every(mark => mark >= 35) ? "Pass" : "Fail";
+
+    document.getElementById("r82").textContent =
+        `Total: ${total}/500 | Percentage: ${percentage.toFixed(2)}% | ${result}`;
+}
+
+
+// Q83: Shopping bill
+function shoppingBill() {
+    const p = document.getElementById("price").value;
+    const q = document.getElementById("quantity").value;
+    const d = document.getElementById("discount").value;
+    const output = document.getElementById("r83");
+
+    if (p === "" || q === "" || d === "") {
+        output.textContent = "Please fill in all fields.";
+        return;
+    }
+
+    const price = Number(p);
+    const quantity = Number(q);
+    const discount = Number(d);
+
+    if (price < 0 || quantity < 0 ||
+        !Number.isInteger(quantity) || discount < 0 || discount > 100) {
+        output.textContent = "Enter valid price, quantity, and discount.";
+        return;
+    }
+
+    const subtotal = price * quantity;
+    const discountAmount = subtotal * discount / 100;
+    const finalBill = subtotal - discountAmount;
+
+    output.textContent =
+        `Subtotal: ₹${subtotal.toFixed(2)} | Discount: ₹${discountAmount.toFixed(2)} | Final bill: ₹${finalBill.toFixed(2)}`;
+}
+
+
+// Q84: Salary calculator
+function salaryCalculator() {
+    const b = document.getElementById("salary").value;
+    const bo = document.getElementById("bonus").value;
+    const d = document.getElementById("deduction").value;
+    const output = document.getElementById("r84");
+
+    if (b === "" || bo === "" || d === "") {
+        output.textContent = "Please fill in all fields.";
+        return;
+    }
+
+    const basic = Number(b);
+    const bonusAmount = Number(bo);
+    const deductions = Number(d);
+
+    if (basic < 0 || bonusAmount < 0 || deductions < 0) {
+        output.textContent = "Values cannot be negative.";
+        return;
+    }
+
+    const netSalary = basic + bonusAmount - deductions;
+
+    output.textContent = "Net salary: ₹" + netSalary.toFixed(2);
+}
+
+
+// Q85: Temperature converter
+function convertTemperature() {
+    const input = document.getElementById("temperature").value;
+    const type = document.getElementById("tempType").value;
+    const output = document.getElementById("r85");
+
+    if (input === "") {
+        output.textContent = "Please enter a temperature.";
+        return;
+    }
+
+    const temp = Number(input);
+    let result;
+
+    if (type === "C") {
+        result = temp * 9 / 5 + 32;
+        output.textContent = `${result.toFixed(2)} °F`;
+    } else {
+        result = (temp - 32) * 5 / 9;
+        output.textContent = `${result.toFixed(2)} °C`;
+    }
+}
+
+
+// Q86: Age calculator
+function ageCalculator() {
+    const input = document.getElementById("birthDate").value;
+    const output = document.getElementById("r86");
+
+    if (input === "") {
+        output.textContent = "Please select your birth date.";
+        return;
+    }
+
+    const birth = new Date(input + "T00:00:00");
+    const today = new Date();
+
+    if (birth > today) {
+        output.textContent = "Birth date cannot be in the future.";
+        return;
+    }
+
+    let age = today.getFullYear() - birth.getFullYear();
+
+    const birthdayNotReached =
+        today.getMonth() < birth.getMonth() ||
+        (today.getMonth() === birth.getMonth() &&
+         today.getDate() < birth.getDate());
+
+    if (birthdayNotReached) {
+        age--;
+    }
+
+    output.textContent = "Your age is " + age + " years.";
+}
+
+
+// Q87: Profit or loss
+function profitLoss() {
+    const cp = document.getElementById("costPrice").value;
+    const sp = document.getElementById("sellingPrice").value;
+    const output = document.getElementById("r87");
+
+    if (cp === "" || sp === "") {
+        output.textContent = "Please enter both prices.";
+        return;
+    }
+
+    const cost = Number(cp);
+    const selling = Number(sp);
+
+    if (cost < 0 || selling < 0) {
+        output.textContent = "Prices cannot be negative.";
+        return;
+    }
+
+    if (selling > cost) {
+        output.textContent =
+            "Profit: ₹" + (selling - cost).toFixed(2);
+    } else if (selling < cost) {
+        output.textContent =
+            "Loss: ₹" + (cost - selling).toFixed(2);
+    } else {
+        output.textContent = "No profit, no loss.";
+    }
+}
+
+
+// Q88: Electricity bill using example slab rates
+function electricityBill() {
+    const input = document.getElementById("units").value;
+    const output = document.getElementById("r88");
+
+    if (input === "") {
+        output.textContent = "Please enter units consumed.";
+        return;
+    }
+
+    const units = Number(input);
+
+    if (units < 0) {
+        output.textContent = "Units cannot be negative.";
+        return;
+    }
+
+    let bill;
+
+    if (units <= 100) {
+        bill = units * 2;
+    } else if (units <= 200) {
+        bill = 100 * 2 + (units - 100) * 3;
+    } else {
+        bill = 100 * 2 + 100 * 3 + (units - 200) * 5;
+    }
+
+    output.textContent = "Electricity bill: ₹" + bill.toFixed(2);
+}
+
+
+// Q89: Currency converter (illustrative rate, not live)
+function currencyConverter() {
+    const input = document.getElementById("amount").value;
+    const output = document.getElementById("r89");
+
+    if (input === "") {
+        output.textContent = "Please enter an amount in INR.";
+        return;
+    }
+
+    const inr = Number(input);
+
+    if (inr < 0) {
+        output.textContent = "Amount cannot be negative.";
+        return;
+    }
+
+    const usdRate = 0.012; // Example only; exchange rates change
+    const usd = inr * usdRate;
+
+    output.textContent = "USD: $" + usd.toFixed(2);
+}
+
+</script>
+</html>
