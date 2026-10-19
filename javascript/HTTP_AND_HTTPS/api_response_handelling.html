@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTPS and API Practice</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 25px;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #1d4ed8;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 18px 0;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #00000010;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 11px 15px;
+      margin: 5px 4px 5px 0;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #a7f3d0;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      min-height: 60px;
+    }
+
+    input {
+      padding: 10px;
+      width: 100%;
+      margin: 8px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+    }
+
+    .note {
+      color: #475569;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>HTTPS & API Response Lab</h1>
+    <p>Practice requests, status codes, headers, cookies and errors.</p>
+
+    <section class="card">
+      <h2>1. GET Request — Status 200</h2>
+      <p>Fetch one sample post from an HTTPS API.</p>
+      <button onclick="getPost()">Fetch Post</button>
+      <pre id="getOutput">Click Fetch Post...</pre>
+    </section>
+
+    <section class="card">
+      <h2>2. HTTP Status Codes</h2>
+      <p>Try a missing post to see a 404 response.</p>
+      <button onclick="getMissingPost()">Test 404</button>
+      <button onclick="simulate401()">Simulate 401</button>
+      <button onclick="simulate403()">Simulate 403</button>
+      <pre id="statusOutput">Choose a test...</pre>
+    </section>
+
+    <section class="card">
+      <h2>3. Response Headers</h2>
+      <p>Inspect the headers returned by the API.</p>
+      <button onclick="inspectHeaders()">Inspect Headers</button>
+      <pre id="headerOutput">Click Inspect Headers...</pre>
+    </section>
+
+    <section class="card">
+      <h2>4. POST Request — Create Data</h2>
+      <input id="postTitle" placeholder="Enter a post title">
+      <button onclick="createPost()">Send POST Request</button>
+      <pre id="postOutput">Enter a title first...</pre>
+    </section>
+
+    <section class="card">
+      <h2>5. Cookies</h2>
+      <p class="note">
+        This demonstration cookie is not an authentication cookie.
+        Do not store passwords or sensitive data in cookies.
+      </p>
+      <button onclick="saveCookie()">Save Demo Cookie</button>
+      <button onclick="readCookie()">Read Cookie</button>
+      <pre id="cookieOutput">No test performed yet.</pre>
+    </section>
+
+    <section class="card">
+      <h2>6. Session Concept</h2>
+      <p>
+        A session stores user-related information on the server.
+        A browser cookie often contains the session identifier.
+      </p>
+      <button onclick="showSession()">Explain Session</button>
+      <pre id="sessionOutput">Click to learn about sessions...</pre>
+    </section>
+  </div>
+
+  <script>
+    const API = "https://jsonplaceholder.typicode.com";
+
+    // Helper: display objects as readable JSON.
+    function show(id, data) {
+      document.getElementById(id).textContent =
+        typeof data === "string"
+          ? data
+          : JSON.stringify(data, null, 2);
+    }
+
+    // 1. GET: request data from an HTTPS API.
+    async function getPost() {
+      show("getOutput", "Loading...");
+
+      try {
+        const response = await fetch(`${API}/posts/1`);
+
+        // fetch() does not throw just because the server returns 404.
+        const data = await response.json();
+
+        show("getOutput", {
+          status: response.status,
+          statusText: response.statusText,
+          ok: response.ok,
+          data: data
+        });
+      } catch (error) {
+        show("getOutput", "Request failed: " + error.message);
+      }
+    }
+
+    // 2. Request a resource that does not exist.
+    async function getMissingPost() {
+      try {
+        const response = await fetch(`${API}/posts/99999999`);
+
+        show("statusOutput", {
+          status: response.status,
+          statusText: response.statusText,
+          ok: response.ok,
+          message: response.ok
+            ? "Request succeeded"
+            : "The server returned an error status"
+        });
+      } catch (error) {
+        show("statusOutput", "Network error: " + error.message);
+      }
+    }
+
+    // These are illustrative examples, NOT actual server requests.
+    function simulate401() {
+      show("statusOutput", {
+        status: 401,
+        meaning: "Unauthorized",
+        explanation: "Authentication is required or invalid.",
+        simulated: true
+      });
+    }
+
+    function simulate403() {
+      show("statusOutput", {
+        status: 403,
+        meaning: "Forbidden",
+        explanation: "The server refuses this action.",
+        simulated: true
+      });
+    }
+
+    // 3. Read headers returned by the API.
+    async function inspectHeaders() {
+      try {
+        const response = await fetch(`${API}/posts/1`);
+
+        show("headerOutput", {
+          status: response.status,
+          contentType: response.headers.get("content-type"),
+          cacheControl: response.headers.get("cache-control"),
+          allHeaders: Object.fromEntries(response.headers.entries())
+        });
+      } catch (error) {
+        show("headerOutput", "Request failed: " + error.message);
+      }
+    }
+
+    // 4. POST: send JSON to the sample API.
+    async function createPost() {
+      const title = document.getElementById("postTitle").value.trim();
+
+      if (!title) {
+        show("postOutput", "Please enter a title.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API}/posts`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            title: title,
+            body: "Created during HTTP practice",
+            userId: 1
+          })
+        });
+
+        const data = await response.json();
+
+        show("postOutput", {
+          status: response.status,
+          ok: response.ok,
+          responseData: data,
+          note: "This sample API simulates creation; it does not permanently save the post."
+        });
+      } catch (error) {
+        show("postOutput", "Request failed: " + error.message);
+      }
+    }
+
+    // 5. Cookie demo: requires a browser context where
+    // JavaScript cookies are permitted.
+    function saveCookie() {
+      document.cookie =
+        "practiceUser=Shailesh; max-age=3600; path=/; SameSite=Lax";
+
+      show("cookieOutput",
+        "Demo cookie saved if cookies are permitted.\n" +
+        "Current cookies: " + (document.cookie || "(none visible)")
+      );
+    }
+
+    function readCookie() {
+      const cookies = document.cookie || "(none visible)";
+      show("cookieOutput", "Browser-visible cookies:\n" + cookies);
+    }
+
+    // 6. Explain a real server-side session.
+    function showSession() {
+      show("sessionOutput", {
+        browser: "Usually holds a session ID in a cookie.",
+        server: "Stores session data, such as the authenticated user ID.",
+        example: "Browser sends session cookie → server finds session → server identifies user.",
+        important: "This page does not create a real server session."
+      });
+    }
+  </script>
+</body>
+</html>
