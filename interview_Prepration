@@ -1,0 +1,266 @@
+# PHP / LARAVEL DEVELOPER INTERVIEW QUESTIONS AND ANSWERS
+## 90-Day Interview Preparation Guide
+### For MCA Freshers and Junior Developers
+
+---
+
+# PHASE 1: DAYS 1–15
+## Section 1: PHP Fundamentals
+
+**Q1. What is PHP?**
+
+Answer: PHP stands for Hypertext Preprocessor. It is a server-side scripting language used to develop dynamic websites and web applications.
+
+**Q2. What is the difference between echo and print?**
+
+Answer: Both are used to display output. Echo can output multiple strings and has no return value. Print outputs one string and returns 1.
+
+**Q3. What is the difference between == and === in PHP?**
+
+Answer: The == operator compares values after type conversion, whereas === compares both value and data type.
+
+**Q4. What are arrays in PHP?**
+
+Answer: An array stores multiple values in a single variable. PHP supports indexed arrays, associative arrays, and multidimensional arrays.
+
+**Q5. What is the difference between GET and POST?**
+
+Answer: GET typically sends data through URL query parameters, while POST sends data in the request body. GET is commonly used to retrieve information, and POST is commonly used to submit data or create resources.
+
+**Q6. What is the difference between include and require?**
+
+Answer: Both include another PHP file. If the file cannot be loaded, include normally produces a warning and continues execution. Require produces an error that stops normal execution.
+
+**Q7. What is a function in PHP?**
+
+Answer: A function is a reusable block of code that performs a specific task. It can accept parameters and return a value.
+
+**Q8. What is variable scope?**
+
+Answer: Variable scope determines where a variable can be accessed. PHP supports local, global, and static variable scope.
+
+**Q9. What is the difference between isset() and empty()?**
+
+Answer: isset() checks whether a variable exists and is not null. empty() checks whether a variable is missing or contains an empty-like value, such as an empty string or zero.
+
+**Q10. How do you handle form data securely in PHP?**
+
+Answer: I validate input on the server, escape output to prevent cross-site scripting, use prepared statements to prevent SQL injection, and use HTTPS to protect data in transit.
+
+**Q11. What is a session in PHP?**
+
+Answer: A session stores user-related data on the server across multiple requests. A session ID, usually stored in a browser cookie, identifies the session.
+
+**Q12. What are cookies?**
+
+Answer: Cookies are small pieces of data stored in a user's browser. They can store preferences or help identify a user's session.
+
+**Q13. What is password_hash()?**
+
+Answer: password_hash() creates a secure password hash. We use password_verify() to verify a password during login.
+
+**Q14. What is exception handling in PHP?**
+
+Answer: Exception handling allows us to manage exceptional situations using try, catch, and optionally finally blocks.
+
+**Q15. What is the difference between client-side and server-side validation?**
+
+Answer: Client-side validation happens in the browser and gives immediate feedback. Server-side validation happens on the server and is essential for security because client-side checks can be bypassed.
+
+---
+
+## Section 2: Object-Oriented Programming (OOP)
+
+**Q16. What is OOP?**
+
+Answer: Object-oriented programming is a programming approach based on classes and objects. It helps organize code, reuse functionality, and maintain larger applications.
+
+**Q17. What is a class and an object?**
+
+Answer: A class is a blueprint that defines properties and methods. An object is an instance of a class.
+
+**Q18. What are the four main principles of OOP?**
+
+Answer: Encapsulation, inheritance, polymorphism, and abstraction.
+
+**Q19. What is encapsulation?**
+
+Answer: Encapsulation combines data and methods within a class and controls access to internal details using access modifiers.
+
+**Q20. What is inheritance?**
+
+Answer: Inheritance allows one class to reuse and extend the properties and methods of another class.
+
+**Q21. What is polymorphism?**
+
+Answer: Polymorphism allows the same interface or method contract to support different implementations, depending on the object or class.
+
+**Q22. What is abstraction?**
+
+Answer: Abstraction hides implementation details and exposes only the essential functionality. In PHP, abstract classes and interfaces help implement abstraction.
+
+**Q23. What is the difference between an abstract class and an interface?**
+
+Answer: An abstract class can contain both implemented and abstract methods, as well as properties. An interface defines a contract that implementing classes must follow.
+
+**Q24. What is a constructor in PHP?**
+
+Answer: A constructor is a special method named __construct() that runs when an object is created. It is commonly used to initialize properties or dependencies.
+
+**Q25. What are public, private, and protected?**
+
+Answer: Public members can be accessed from anywhere permitted by the language rules. Private members can be accessed only within the declaring class. Protected members can be accessed within that class and its subclasses.
+
+**Q26. What is method overriding?**
+
+Answer: Method overriding occurs when a child class provides its own implementation of an inherited method, following PHP's compatibility rules.
+
+**Q27. What is the difference between static and non-static methods?**
+
+Answer: Static methods belong to the class and can be called without creating an object. Non-static methods normally require an object instance.
+
+**Q28. What is the parent keyword?**
+
+Answer: The parent keyword refers to the parent class. It can be used to call a parent class method or constructor.
+
+**Q29. What are traits in PHP?**
+
+Answer: Traits allow code reuse across multiple classes without requiring those classes to inherit from the same parent class.
+
+**Q30. What is the difference between a regular class and an abstract class?**
+
+Answer: A regular class can be instantiated if it is otherwise instantiable. An abstract class cannot be instantiated directly and may define methods that subclasses must implement.
+
+---
+
+## Section 3: MySQL and Databases
+
+**Q31. What is a database?**
+
+Answer: A database is an organized collection of data that can be stored, retrieved, updated, and managed efficiently.
+
+**Q32. What is the difference between SQL and MySQL?**
+
+Answer: SQL is a language used to work with relational databases. MySQL is a relational database management system that uses SQL.
+
+**Q33. What is a primary key?**
+
+Answer: A primary key uniquely identifies each row in a table. It must contain unique, non-null values.
+
+**Q34. What is a foreign key?**
+
+Answer: A foreign key establishes a relationship between tables and helps maintain referential integrity.
+
+**Q35. What is the difference between DELETE, TRUNCATE, and DROP?**
+
+Answer: DELETE removes selected rows and supports a WHERE condition. TRUNCATE removes all rows from a table. DROP removes the table structure itself. Transaction and rollback behavior can depend on the database engine and operation.
+
+**Q36. What is the difference between WHERE and HAVING?**
+
+Answer: WHERE filters rows before grouping. HAVING filters groups after GROUP BY.
+
+**Q37. What is an INNER JOIN?**
+
+Answer: INNER JOIN returns rows that have matching values in both joined tables.
+
+**Q38. What is a LEFT JOIN?**
+
+Answer: LEFT JOIN returns all rows from the left table and matching rows from the right table. If no match exists, right-side columns contain NULL.
+
+**Q39. What is a subquery?**
+
+Answer: A subquery is a query nested inside another SQL query.
+
+**Q40. What is an index?**
+
+Answer: An index helps the database find records more efficiently. However, indexes use storage and can slow down data modifications.
+
+**Q41. What is normalization?**
+
+Answer: Normalization organizes database tables to reduce unnecessary duplication and improve data consistency.
+
+**Q42. What is the difference between CHAR and VARCHAR?**
+
+Answer: CHAR is a fixed-length character type, while VARCHAR stores variable-length strings up to its declared limit.
+
+**Q43. What are aggregate functions?**
+
+Answer: Aggregate functions calculate a result from multiple rows. Examples include COUNT(), SUM(), AVG(), MIN(), and MAX().
+
+**Q44. What is GROUP BY?**
+
+Answer: GROUP BY combines rows with matching values into groups, often for aggregate calculations.
+
+**Q45. How do you find duplicate records?**
+
+Answer: I use GROUP BY with HAVING COUNT(*) > 1 on the columns that should be unique.
+
+Example:
+SELECT email, COUNT(*)
+FROM users
+GROUP BY email
+HAVING COUNT(*) > 1;
+
+---
+
+## Section 4: HTTP, Security, Authentication, and Git
+
+**Q46. What is HTTP?**
+
+Answer: HTTP stands for Hypertext Transfer Protocol. It defines how clients and servers exchange requests and responses.
+
+**Q47. What is the difference between HTTP and HTTPS?**
+
+Answer: HTTPS uses TLS to encrypt data in transit and help verify the server's identity. HTTP does not provide that TLS protection.
+
+**Q48. Explain GET, POST, PUT, PATCH, and DELETE.**
+
+Answer: GET retrieves a resource. POST submits data or creates a resource. PUT replaces a resource's representation. PATCH partially updates a resource. DELETE requests removal of a resource.
+
+**Q49. What are HTTP status codes?**
+
+Answer: Status codes indicate the result of a request. Examples include 200 OK, 201 Created, 301 Moved Permanently, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, and 500 Internal Server Error.
+
+**Q50. What are request and response headers?**
+
+Answer: Headers contain metadata about an HTTP request or response, such as content type, authentication information, caching directives, and cookies.
+
+**Q51. What is authentication?**
+
+Answer: Authentication verifies a user's identity, for example through a username and password.
+
+**Q52. What is authorization?**
+
+Answer: Authorization determines what an authenticated user is allowed to access or do.
+
+**Q53. What is Git?**
+
+Answer: Git is a distributed version control system used to track changes in source code and collaborate with other developers.
+
+**Q54. What is the difference between Git and GitHub?**
+
+Answer: Git is the version control tool. GitHub is an online platform for hosting Git repositories and collaborating on code.
+
+**Q55. Explain git add, git commit, and git push.**
+
+Answer: git add stages changes, git commit saves a snapshot in the local repository, and git push uploads local commits to a remote repository.
+
+**Q56. What does git pull do?**
+
+Answer: git pull fetches changes from a remote repository and integrates them into the current branch.
+
+**Q57. What is a Git branch?**
+
+Answer: A branch is an independent line of development that allows changes to be developed without directly modifying another branch.
+
+**Q58. What is a merge conflict?**
+
+Answer: A merge conflict occurs when Git cannot automatically reconcile competing changes. Developers resolve the conflicting content and complete the merge.
+
+**Q59. Why might code work on one computer but fail on another?**
+
+Answer: Possible reasons include different dependency versions, environment variables, PHP extensions, database configuration, operating systems, file permissions, or missing files.
+
+**Q60. What is a .gitignore file?**
+
+Answer: A .gitignore file specifies files and directories that Git should normally ignore, such as local environment files and generated dependencies
